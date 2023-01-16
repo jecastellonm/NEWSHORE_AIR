@@ -26,6 +26,12 @@ Front basada en CORE MVC con dos listas desplegables construidas en base a los o
 Se usa inyeccion de dependencias para el uso de los metodos de la API NEWSHORE_AIR
 Se realiza control de algunas excepciones
 Se usan listas para minimizar errores de digitacion usando cuadros de texto propuestos
+
+Diseño basado en la teoria de grafos aplicada a calculo de rutas
+Calcula rutas de hasta tres escalas
+Exceptua escalas internacionales cuando el viaje es local, en este caso a Colombia
+
+
 Rutas de Prueba
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
                CTG BOG MAD          MZL MDE BCN        PEI BOG MAD

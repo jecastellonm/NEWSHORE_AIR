@@ -17,7 +17,7 @@ namespace NEWSHORE_UI.Models
         public double Price { get; set; }
     }
 
-    //public class Flights
+    //public class Flights  
     //{
     //    Transports Transporty { get; set; }
     //    public string Origin { get; set; }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using NEWSHORE_AIR.DataAccess;
 
 namespace NEWSHORE_UI.Controllers
 {
@@ -56,10 +57,10 @@ namespace NEWSHORE_UI.Controllers
         /// <param origin="origin">Origen Viaje</param>
         /// <param destination="destination">Destino Viaje</param>
         /// <returns>Retorna price y flightNumber </returns>
-        public IActionResult Buscar(string origin, string destination)
+        public IActionResult CalcularRuta(string origin, string destination)
         {
-            Journey lstViaje = new Journey();
-            lstViaje = Business.SearchJourney.Journeys(origin, destination);
+            Journeyy lstViaje = new Journeyy();
+            lstViaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
             return View();
         }
 
