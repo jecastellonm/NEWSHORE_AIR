@@ -1,0 +1,80 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using NEWSHORE_AIR.API;
+using NEWSHORE_AIR.DataAccess;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace NEWSHORE_AIR.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        private readonly IConfiguration Configuration; 
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
+        private readonly ILogger<WeatherForecastController> _logger;
+        API_Get newshore_api = new API_Get();
+        public WeatherForecastController(IConfiguration configuration, ILogger<WeatherForecastController> logger)
+        {
+            Configuration = configuration;
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+
+        [HttpPost]
+        public IEnumerable<ResponseNewShoreAPI> Get_NewShoreAir()
+        {
+            string url = Configuration["Rutas:MultipyRetorno"];
+            dynamic response = newshore_api.Get(url);
+            //dynamic response = newshore_api.Get("https://recruiting-api.newshore.es/api/flights/2");
+
+            //return x {
+            //    departureStation = "A",
+            //    arrivalStation = "B",
+            //    flightCarrier = "C",
+            //    flightNumber = "D",
+            //    price = 200
+            //        };
+            //response.data[1].departureStation.toString();
+            List<ResponseNewShoreAPI> responseNewShoreList = new List<ResponseNewShoreAPI>();
+            ResponseNewShoreAPIList responseNewShoreList2 = new ResponseNewShoreAPIList();
+            responseNewShoreList.AddRange(response);
+            //responseNewShoreList = (List<ResponseNewShoreAPI>)response;
+            //responseNewShoreList.ForEach(d =>
+            //{
+            //    d.departureStation = response[0].departureStation; //response[0].departureStation.ToString();
+            //    d.arrivalStation = response[0].arrivalStation;
+            //    d.flightCarrier = response[0].flightCarrier;
+            //    d.flightNumber = response[0].flightNumber;
+            //    d.price = response[0].price;
+            //});
+            //responseNewShoreList = (ResponseNewShoreAPIList)response;
+            //responseNewShoreList = JsonConvert.DeserializeObject<ResponseNewShoreAPIList>(response);
+            return responseNewShoreList; //(IEnumerable<ResponseNewShoreAPI>)
+            //return ResponseNewShoreList;
+            //return JsonConvert.DeserializeObject(response.toString());
+        }
+
+    }
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NEWSHORE_AIR", "NEWSHORE_AIR\NEWSHORE_AIR.csproj", "{7E29A191-E930-445D-90DA-5ED9D7D29CBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEWSHORE_UI", "NEWSHORE_UI\NEWSHORE_UI.csproj", "{8B2FF9E3-0F97-4035-96F6-E73F9AC07DA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E29A191-E930-445D-90DA-5ED9D7D29CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E29A191-E930-445D-90DA-5ED9D7D29CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E29A191-E930-445D-90DA-5ED9D7D29CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E29A191-E930-445D-90DA-5ED9D7D29CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B2FF9E3-0F97-4035-96F6-E73F9AC07DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B2FF9E3-0F97-4035-96F6-E73F9AC07DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B2FF9E3-0F97-4035-96F6-E73F9AC07DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B2FF9E3-0F97-4035-96F6-E73F9AC07DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E0D3386-6726-449D-9804-D3CCF1FD8EFE}
+	EndGlobalSection
+EndGlobal

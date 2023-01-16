@@ -1,0 +1,116 @@
+MZL MED      CTG MAD             MZL BCN             PEI MAD   
+               CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
+
+MED PEI               MDE BOG
+ MDE MZL PEI           MDE CTG BOG
+ MDE CTG MZL PEI       MDE MZL PEI BOG
+                       MDE MZL CTG BOG
+
+PEI BCN                    MZL MEX               MZL MAD
+ PEI MZL MDE BCN             MZL PEI BOG MEX       MZL CTG BOG MAD
+ PEI MZL CTG MDE BCN         MZL CTG BOG MEX       MZL PEI BOG MAD
+
+BCN PEI
+ BCN MDE MZL PEI
+
+MED MAD
+MED CTG BOG MAD
+MDE MZL PEI BOG MAD
+MDE MZL CTG BOG MAD
+
+
+
+
+
+
+
+
+            var pri_ = (from o in lstviajes
+                        where o.departureStation == origen || o.arrivalStation == pr0[0]
+                        select o.arrivalStation).ToList();
+            var Pri__ = (from o in lstviajes
+                         where o.departureStation == origen || o.arrivalStation == pr0[0]
+                         select o.departureStation).ToList();
+            var pri_i_ = pri_.Intersect(Pri__).ToList();
+
+
+              var pri_ = (from o in lstviajes
+                          where o.departureStation == origen || o.arrivalStation == pri1[0]
+                          select o.arrivalStation).ToList();
+              var Pri__ = (from o in lstviajes
+                           where o.departureStation == origen || o.arrivalStation == pri1[0]
+                           select o.departureStation).ToList();
+              var pri_i_ = pri_.Intersect(Pri__).ToList();
+              var pri_i_1 = (from o in lstviajes
+                             where o.departureStation == origen || o.arrivalStation == pri1[0]
+                             select o.arrivalStation)
+                             .Intersect((from o in lstviajes
+                                         where o.departureStation == origen || o.arrivalStation == pri1[0]
+                                         select o.departureStation)).ToList();
+
+
+
+            var sdoOO = (from o in lstviajes
+                         where o.departureStation == origen || o.arrivalStation == pri_CO[0]
+                         select o.arrivalStation).ToList();
+            var sdoOOO = (from o in lstviajes
+                          where o.departureStation == origen || o.arrivalStation == pri_CO[0]
+                          select o.departureStation).ToList();
+            var sdoOOOO = sdoOO.Intersect(sdoOOO).ToList();
+
+
+
+
+
+
+        if (flightCarrierOrigen[0] == "CO" && flightCarrierDestino[0] == "CO")
+        {
+          var priO = (from o in lstviajes
+                      where o.arrivalStation == destino && o.flightCarrier == "CO"
+                      select o.departureStation + " " + o.arrivalStation).ToList();
+          string priOO = priO[0];
+          totalPrice0 = (double)(from o in lstviajes
+                                 where (o.arrivalStation == destino && o.flightCarrier == "CO")
+                                 select o.price).FirstOrDefault();
+        }
+        else
+        {
+          var priO = (from o in lstviajes
+                      where o.arrivalStation == destino
+                      select o.departureStation + " " + o.arrivalStation).ToList();
+          string priOO = priO[0];
+          totalPrice0 = (double)(from o in lstviajes
+                                 where (o.arrivalStation == destino)
+                                 select o.price).FirstOrDefault();
+
+        }
+
+
+
+
+
+
+
+      //var sdoO = (from o in lstviajes
+      //            where (o.departureStation == origen || o.arrivalStation == pri[0])
+      //            select o.departureStation + " " + o.arrivalStation).ToList();
+
+      //var sdoOOOOO = (from o in lstviajes
+      //            where (o.departureStation == origen && o.arrivalStation == sdoOOOO[0])
+      //                    || (o.departureStation == origen && o.arrivalStation == sdoOOOO[1])
+      //                    || (o.departureStation == sdoOOOO[0] && o.arrivalStation == pri[0])
+      //                    || (o.departureStation == sdoOOOO[1] && o.arrivalStation == pri[0])
+      //                select o.departureStation + " " + o.arrivalStation).ToList();
+      //if (sdoOOOO.Count() > 0)
+      //{
+      //    string escala1 = pri.ToString();
+      //    double totalPrice3 = (double)(from o in lstviajes
+      //                                  where o.departureStation == origen && o.arrivalStation == escala1
+      //                                  select o.price).First();
+      //    double totalPrice4 = (double)(from o in lstviajes
+      //                                  where o.departureStation == escala1 && o.arrivalStation == destino
+      //                                  select o.price).First();
+      //    double totalPrice_ = totalPrice1 + totalPrice2;
+      //    var priOList = (from o in lstviajes where o.departureStation == origen && o.arrivalStation == escala1 select o).First();
+      //    var sdoOList = (from o in lstviajes where o.departureStation == escala1 && o.arrivalStation == destino select o).First();
+      //}

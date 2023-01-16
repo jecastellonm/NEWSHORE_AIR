@@ -1,0 +1,61 @@
+﻿@*@model NewShore*@
+@model Journey
+@{
+    ViewData["Title"] = "Home Page";
+}
+@section scripts {
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Content/NewShore.js" type="text/javascript"></script>
+}
+<div class="text-center">
+    <h1 class="display-4">NEWSHORE</h1>
+    <p></p>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Journeys" }))
+    {
+        <div class="row mt-2">
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="form-group">
+                    @Html.Label("Origen*:")
+                    @Html.DropDownListFor(x => x.Origin, (IEnumerable<SelectListItem>)ViewBag.origenes)
+                </div>
+            </div>
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="form-group">
+                    @Html.Label("Destino*:")
+                    @Html.DropDownListFor(x => x.Destination, (IEnumerable<SelectListItem>)ViewBag.destinos)
+                </div>
+            </div>
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="form-group">
+                    @Html.Label("Precio*:")
+                    @Html.DisplayFor(x => x.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+                </div>
+            </div>
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="form-group">
+                    @foreach (var item in Model.Flights)
+                    {
+                        @Html.Label("Numero Vuelo*:")
+                        @Html.DisplayFor(modelitem => item.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+                    }
+                </div>
+            </div>
+            <div class="col-12 mt-2">
+                <div class="button-group form-footer">
+                    <div class="start">
+                        @*@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })*@
+                        @Html.ActionLink("Buscar", "Buscar", new { origin = Model.Origin, destino = Model.Destination }, new { onclick = string.Format("ConfirmacionDesActivacion(event, '" + Model.Origin + "','" + Model.Destination + "'); event.preventDefault();"), @class = "btn btn-primary", id = "Buscar" })
+                    </div>
+                    @*<div class="end">
+                            <button class="btn btn-primary" id="btnSubmit" type="submit">
+                                Buscar
+                            </button>
+                        </div>*@
+                </div>
+            </div>
+            @*<div>
+                    @Html.ActionLink("Regresar", "Index", "Mod", null, new { @class = "btn btn-link" })
+                </div>*@
+        </div>
+    }
+</div>
