@@ -32,6 +32,7 @@ Calcula rutas de hasta tres escalas
 Exceptua escalas internacionales cuando el viaje es local, en este caso a Colombia
 
 
+
 Rutas de Prueba
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
                CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
