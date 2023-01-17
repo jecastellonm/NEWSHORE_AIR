@@ -10,7 +10,7 @@
 <div class="text-center">
   <h1 class="display-4">NEWSHORE</h1>
   <p></p>
-  @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Journeys" }))
+  @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "Journeys" }))
   {
     <div class="row mt-2">
       <div class="col-12 col-xl-6 col-lg-6">
@@ -33,43 +33,46 @@
       </div>
       <div class="col-12 col-xl-6 col-lg-6">
         <div class="form-group">
-          @foreach (var item in Model.Flights)
+
+          @if (Model.Flights is not null)
           {
-            <div>
-              @Html.Label("Origen:  ")
-              @Html.DisplayFor(modelitem => item.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-            </div>
-            <div>
-              @Html.Label("Destino:  ")
-              @Html.DisplayFor(modelitem => item.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-            </div>
-            <div>
-              @Html.Label("Aerolinea:  ")
-              @Html.DisplayFor(modelitem => item.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-            </div>
-            <div>
-              @Html.Label("Numero Vuelo*:")
-              @Html.DisplayFor(modelitem => item.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-            </div>
-            <div>
-              @Html.Label("Precio*:")
-              @Html.DisplayFor(modelitem => item.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-            </div>
-
+            @foreach (var item in Model.Flights)
+            {
+              <div>
+                @Html.Label("Origen:  ")
+                @Html.DisplayFor(modelitem => item.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+              </div>
+              <div>
+                @Html.Label("Destino:  ")
+                @Html.DisplayFor(modelitem => item.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+              </div>
+              <div>
+                @Html.Label("Aerolinea:  ")
+                @Html.DisplayFor(modelitem => item.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+              </div>
+              <div>
+                @Html.Label("Numero Vuelo*:")
+                @Html.DisplayFor(modelitem => item.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+              </div>
+              <div>
+                @Html.Label("Precio*:")
+                @Html.DisplayFor(modelitem => item.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+              </div>
+            }
           }
-
         </div>
       </div>
       <div class="col-12 mt-2">
         <div class="button-group form-footer">
           <div class="start">
             @*@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })*@
-            @Html.ActionLink("Calcular Ruta", "CalcularRuta", new { origin = Model.Origin, destino = Model.Destination }, new { onclick = string.Format("ConfirmacionDesActivacion(event, '" + Model.Origin + "','" + Model.Destination + "'); event.preventDefault();"), @class = "btn btn-primary", id = "Buscar" })
+            @Html.ActionLink("Calcular Ruta", "Index", new { origin = Model.Origin, destination = Model.Destination })
+            @*, new { onclick = string.Format("CalcularRuta(event, '" + Model.Origin + "','" + Model.Destination + "'); event.preventDefault();"), @class = "btn btn-primary", id = "CalcularRuta" })*@
           </div>
           @*<div class="end">
-                <button class="btn btn-primary" id="btnSubmit" type="submit">
-                    Buscar
-                </button>
+              <button class="btn btn-primary" id="btnSubmit" type="submit">
+                Calcular Ruta
+              </button>
             </div>*@
         </div>
       </div>

@@ -18,7 +18,6 @@ namespace NEWSHORE_AIR.API
   {
     private readonly IConfiguration _configuration;
     private readonly ILogger<API_Get> _logger;
-    private object priO;
 
     //API_Get newshore_api = new API_Get();
     public API_Get(IConfiguration configuration, ILogger<API_Get> logger)
@@ -35,13 +34,16 @@ namespace NEWSHORE_AIR.API
       request.Proxy = null;
       try
       {
-
         HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
         Stream stream = httpWebResponse.GetResponseStream();
-        StreamReader streamReader = new StreamReader(stream);
-        string datos = HttpUtility.HtmlDecode(streamReader.ReadToEnd());
-        dynamic data = JsonConvert.DeserializeObject<List<ResponseNewShoreAPI>>(datos);
-        return data;
+        if(httpWebResponse.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+          StreamReader streamReader = new StreamReader(stream);
+          string datos = HttpUtility.HtmlDecode(streamReader.ReadToEnd());
+          dynamic data = JsonConvert.DeserializeObject<List<ResponseNewShoreAPI>>(datos);
+          return data;
+        }
+        return null;
       }
       catch
       {
