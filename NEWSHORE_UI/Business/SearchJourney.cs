@@ -34,7 +34,7 @@ namespace NEWSHORE_UI.Business
       catch (Exception ex)
       {
         Message = $"Index HomeController Error {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}  Error:  " + ex.Message;
-        _logger.LogInformation(Message);
+        _logger.LogError(Message);
       }
       return null;
     }

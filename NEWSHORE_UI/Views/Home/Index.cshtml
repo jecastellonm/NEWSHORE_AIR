@@ -6,7 +6,7 @@
 }
 @section scripts {
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="~/Content/NewShore.js" type="text/javascript"></script>
+  <script src="~/js/site.js" type="text/javascript"></script>
 }
 <div class="text-center">
   <h1 class="display-4">NEWSHORE</h1>
@@ -17,13 +17,13 @@
       <div class="col-12 col-xl-6 col-lg-6">
         <div class="form-group">
           @Html.Label("Origen*:")
-          @Html.DropDownListFor(x => x.Origin, (IEnumerable<SelectListItem>)ViewBag.origenes)
+          @Html.DropDownListFor(x => x.Origin, (IEnumerable<SelectListItem>)ViewBag.origenes, htmlAttributes: new { @class = "form-control", @id = "Origen" }))
         </div>
       </div>
       <div class="col-12 col-xl-6 col-lg-6">
         <div class="form-group">
           @Html.Label("Destino*:")
-          @Html.DropDownListFor(x => x.Destination, (IEnumerable<SelectListItem>)ViewBag.destinos)
+          @Html.DropDownListFor(x => x.Destination, (IEnumerable<SelectListItem>)ViewBag.destinos, htmlAttributes: new { @class = "form-control", @id = "Destino" }))
         </div>
       </div>
       <div class="col-12 col-xl-6 col-lg-6">
@@ -67,7 +67,7 @@
         <div class="button-group form-footer">
           <div class="start">
             @*@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })*@
-            @Html.ActionLink("Calcular Ruta", "Index", "Home", new { origin = Model.Origin, destination = Model.Destination }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Calcular Ruta", "Index", "Home", new { origin = "MDE", destination = "MAD" }, new { onclick = string.Format("CalcularRuta(event, '" + "MDE" + "','" + "MAD" + "'); event.preventDefault();"), @class = "btn btn-primary", id="CalcularRuta" })
             @*, new { onclick = string.Format("CalcularRuta(event, '" + Model.Origin + "','" + Model.Destination + "'); event.preventDefault();"), @class = "btn btn-primary", id = "CalcularRuta" })*@
           </div>
           @*<div class="end">

@@ -35,7 +35,7 @@ namespace NEWSHORE_UI.Controllers
     /// <returns>Vista NEWSHORE</returns>
     public IActionResult Index(string? origin, string? destination)
     {
-      ActionResult result = null;
+      IActionResult result = null;
       try
       {
         Journeyy Viaje = new Journeyy();
@@ -51,7 +51,8 @@ namespace NEWSHORE_UI.Controllers
         ViewBag.destinos = destinos_sli;
         if ( origin is not null &&  destination is not null) 
         {
-          Viaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
+          Viaje = _api_Get.Rutas(origin, destination);
+          //Viaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
         }
         result = View(Viaje);
       }
