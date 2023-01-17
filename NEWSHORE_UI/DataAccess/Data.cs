@@ -18,10 +18,6 @@ namespace NEWSHORE_UI.DataAccess
       try
       {
         string url = "https://recruiting-api.newshore.es/api/flights/2";
-        //if (url == "")
-          //url = _configuration["Rutas:MultipyRetorno"];
-        //string url = _configuration["Rutas:MultipyRetorno"];
-        //var origenes = _api_Get.Origins(url).ToArray();
         List<SelectListItem> lstorigenes = new List<SelectListItem>();
         for (int i = 0; i < origenes.Length; i++)
         {
@@ -33,7 +29,7 @@ namespace NEWSHORE_UI.DataAccess
       catch (Exception ex)
       {
         //Message = $"Index HomeController Error {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}  Error:  " + ex.Message;
-        //_logger.LogInformation(Message);
+        //_logger.LogError(Message);
       }
       return default;
     }
@@ -42,10 +38,6 @@ namespace NEWSHORE_UI.DataAccess
     {
       try
       {
-        //if (url == null)
-        //  url = _configuration["Rutas:MultipyRetorno"];
-        //string url = _configuration["Rutas:MultipyRetorno"];
-        //var destinos = _api_Get.Destinations().ToArray();
         List<SelectListItem> lstdestinos = new List<SelectListItem>();
         for (int i = 0; i < destinos.Length; i++)
         {
@@ -57,7 +49,7 @@ namespace NEWSHORE_UI.DataAccess
       catch (Exception ex)
       {
         //Message = $"Index HomeController Error {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}  Error:  " + ex.Message;
-        //_logger.LogInformation(Message);
+        //_logger.LogError(Message);
       }
       return default;
     }

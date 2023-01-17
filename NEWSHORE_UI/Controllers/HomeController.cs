@@ -33,11 +33,12 @@ namespace NEWSHORE_UI.Controllers
     /// <param></param>
     /// <param></param>
     /// <returns>Vista NEWSHORE</returns>
-    public IActionResult Index()
+    public IActionResult Index(string? origin, string? destination)
     {
       ActionResult result = null;
       try
       {
+        Journeyy Viaje = new Journeyy();
         string url = _configuration["Rutas:MultipyRetorno"];
         var origenes = _api_Get.Origins(url).ToArray();
         //List<SelectListItem> origenes = new List<SelectListItem>();
@@ -48,35 +49,41 @@ namespace NEWSHORE_UI.Controllers
         destinos_sli = Data.Destinations(destinos);
         ViewBag.origenes = origenes_sli;
         ViewBag.destinos = destinos_sli;
-        result = View();
+        if ( origin is not null &&  destination is not null) 
+        {
+          Viaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
+        }
+        result = View(Viaje);
       }
       catch (Exception ex)
       {
         Message = $"Index HomeController Error {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}  Error:  " + ex.Message;
-        _logger.LogInformation(Message);
+        _logger.LogError(Message);
         result = NotFound();
       }
       return result;
     }
 
-    [HttpPost]
-    public IActionResult Index(string? origin, string? destination)
-    {
-      ActionResult result = null;
-      try
-      {
-        Journeyy lstViaje = new Journeyy();
-        lstViaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
-        result = View();
-      }
-      catch (Exception ex)
-      {
-        Message = $"Index HomeController Error {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}  Error:  " + ex.Message;
-        _logger.LogInformation(Message);
-        result = NotFound();
-      }
-      return result;
-    }
+    //[HttpPost]
+    //public IActionResult Index(string origin, string destination)
+    //{
+    //  ActionResult result = null;
+    //  try
+    //  {
+    //    Journeyy Viaje = new Journeyy();
+    //    Viaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
+    //    result = View(Viaje);
+    //  }
+    //  catch (Exception ex)
+    //  {
+    //    Message = $"Index HomeController Error {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}  Error:  " + ex.Message;
+    //    _logger.LogError(Message);
+    //    result = NotFound();
+    //  }
+    //  return result;
+    //}
+    
+    
     /// <summary>
     /// Busca origen y destino del viaje
     /// </summary>

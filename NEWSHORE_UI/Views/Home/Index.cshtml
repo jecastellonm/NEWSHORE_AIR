@@ -1,5 +1,6 @@
 ﻿@*@model NewShore*@
-@model Journey
+@using NEWSHORE_AIR.DataAccess
+@model Journeyy
 @{
   ViewData["Title"] = "Home Page";
 }
@@ -66,7 +67,7 @@
         <div class="button-group form-footer">
           <div class="start">
             @*@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })*@
-            @Html.ActionLink("Calcular Ruta", "Index", new { origin = Model.Origin, destination = Model.Destination })
+            @Html.ActionLink("Calcular Ruta", "Index", "Home", new { origin = Model.Origin, destination = Model.Destination }, new { @class = "btn btn-primary" })
             @*, new { onclick = string.Format("CalcularRuta(event, '" + Model.Origin + "','" + Model.Destination + "'); event.preventDefault();"), @class = "btn btn-primary", id = "CalcularRuta" })*@
           </div>
           @*<div class="end">

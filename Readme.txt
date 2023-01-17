@@ -30,8 +30,9 @@ Se usan listas para minimizar errores de digitacion usando cuadros de texto prop
 Diseño basado en la teoria de grafos aplicada a calculo de rutas
 Calcula rutas de hasta tres escalas
 Exceptua escalas internacionales cuando el viaje es local, en este caso a Colombia
-
-
+Uso de Clases de BootStrap
+Uso de Ajax 
+Uso de SwalAlert para los mensajes
 
 Rutas de Prueba
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
