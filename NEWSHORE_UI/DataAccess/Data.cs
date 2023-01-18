@@ -21,7 +21,7 @@ namespace NEWSHORE_UI.DataAccess
         List<SelectListItem> lstorigenes = new List<SelectListItem>();
         for (int i = 0; i < origenes.Length; i++)
         {
-          lstorigenes.Add(new SelectListItem() { Text = origenes[i], Value = i + 1.ToString() });
+          lstorigenes.Add(new SelectListItem() { Text = origenes[i], Value = (i+1).ToString()});
         }
         //SelectList listItems = new SelectList(origenes, "", "");
         return lstorigenes;
@@ -41,7 +41,7 @@ namespace NEWSHORE_UI.DataAccess
         List<SelectListItem> lstdestinos = new List<SelectListItem>();
         for (int i = 0; i < destinos.Length; i++)
         {
-          lstdestinos.Add(new SelectListItem() { Text = destinos[i], Value = i + 1.ToString() });
+          lstdestinos.Add(new SelectListItem() { Text = destinos[i], Value = (i+1).ToString() });
         }
         //SelectList listItems = new SelectList(origenes, "", "");
         return lstdestinos;

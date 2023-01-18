@@ -27,6 +27,7 @@ Se usa inyeccion de dependencias para el uso de los metodos de la API NEWSHORE_A
 Se realiza control de algunas excepciones
 Se usan listas para minimizar errores de digitacion usando cuadros de texto propuestos
 
+Uso de Clases anidadas y/o enlazadas
 Diseño basado en la teoria de grafos aplicada a calculo de rutas
 Calcula rutas de hasta tres escalas
 Exceptua escalas internacionales cuando el viaje es local, en este caso a Colombia

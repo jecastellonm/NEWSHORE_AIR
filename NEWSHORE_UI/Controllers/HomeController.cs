@@ -49,7 +49,7 @@ namespace NEWSHORE_UI.Controllers
         destinos_sli = Data.Destinations(destinos);
         ViewBag.origenes = origenes_sli;
         ViewBag.destinos = destinos_sli;
-        if ( origin is not null &&  destination is not null) 
+        if ( origin is not null &&  destination is not null && origin != destination) 
         {
           Viaje = _api_Get.Rutas(origin, destination);
           //Viaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
@@ -94,7 +94,8 @@ namespace NEWSHORE_UI.Controllers
     public IActionResult CalcularRuta(string origin, string destination)
     {
       Journeyy lstViaje = new Journeyy();
-      lstViaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
+      lstViaje = _api_Get.Rutas(origin, destination);
+      //lstViaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
       return View();
     }
 
