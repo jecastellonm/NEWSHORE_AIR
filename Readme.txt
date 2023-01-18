@@ -11,7 +11,7 @@ Se parametriza en appsettings las url https://recruiting-api.newshore.es/api/fli
 4 Metodos
 GET
 ​/NewShore​/Get_NewShoreAir
-Consume API https://recruiting-api.newshore.es/api/flights)
+Consume API https://recruiting-api.newshore.es/api/flights
 GET
 ​/NewShore​/Origin
 Extrae los origenes de la data
@@ -22,14 +22,14 @@ GET
 ​/NewShore​/Rutas
 Calcula las rutas
 NEW_SHORE_UI
-Front basada en CORE MVC con dos listas desplegables construidas en base a los origenes y destino provenientes de la data suministrada por el API consumida, area de visualizacion de la ruta calculada y boton CALCULAR RUTA
+Front basada en NET CORE MVC con dos listas desplegables construidas en base a los origenes y destino provenientes de la data suministrada por el API consumida, area de visualizacion de la ruta calculada y boton CALCULAR RUTA
 Se usa inyeccion de dependencias para el uso de los metodos de la API NEWSHORE_AIR
 Se realiza control de algunas excepciones
 Se usan listas para minimizar errores de digitacion usando cuadros de texto propuestos
-
 Uso de Clases anidadas y/o enlazadas
 Diseño basado en la teoria de grafos aplicada a calculo de rutas
-Calcula rutas de hasta tres escalas
+Calcula rutas de hasta dos escalas
+Calcula una ruta alternativa en el caso de que exista con sus escalas si asi fuese
 Exceptua escalas internacionales cuando el viaje es local, en este caso a Colombia
 Uso de Clases de BootStrap
 Uso de Ajax 
@@ -39,10 +39,10 @@ Rutas de Prueba
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
                CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
 
-MED PEI               MDE BOG
- MDE MZL PEI           MDE CTG BOG
- MDE CTG MZL PEI       MDE MZL PEI BOG
-                       MDE MZL CTG BOG
+MED PEI               MDE BOG                  BOG BCN
+ MDE MZL PEI           MDE CTG BOG               BOG CTG MDE BCN
+ MDE CTG MZL PEI       MDE MZL PEI BOG           BOG PEI MZL MDE BCN
+                       MDE MZL CTG BOG           BOG CTG MZL MDE BCN
 
 PEI BCN                    MZL MEX               MZL MAD
  PEI MZL MDE BCN             MZL PEI BOG MEX       MZL CTG BOG MAD
@@ -55,6 +55,5 @@ MED MAD
 MED CTG BOG MAD
 MDE MZL PEI BOG MAD
 MDE MZL CTG BOG MAD
-
 
 
