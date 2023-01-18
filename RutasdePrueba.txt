@@ -1,10 +1,10 @@
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
                CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
 
-MED PEI               MDE BOG
- MDE MZL PEI           MDE CTG BOG
- MDE CTG MZL PEI       MDE MZL PEI BOG
-                       MDE MZL CTG BOG
+MED PEI               MDE BOG                  BOG BCN
+ MDE MZL PEI           MDE CTG BOG               BOG CTG MDE BCN
+ MDE CTG MZL PEI       MDE MZL PEI BOG           BOG PEI MZL MDE BCN
+                       MDE MZL CTG BOG           BOG CTG MZL MDE BCN
 
 PEI BCN                    MZL MEX               MZL MAD
  PEI MZL MDE BCN             MZL PEI BOG MEX       MZL CTG BOG MAD

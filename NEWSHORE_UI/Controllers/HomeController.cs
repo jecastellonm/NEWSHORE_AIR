@@ -54,7 +54,7 @@ namespace NEWSHORE_UI.Controllers
           Viaje = _api_Get.Rutas(origin, destination);
           //Viaje = (Journeyy)Business.SearchJourney.Journeys(origin, destination);
         }
-        result = View(Viaje);
+        return View(Viaje);
       }
       catch (Exception ex)
       {

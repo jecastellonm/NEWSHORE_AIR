@@ -33,8 +33,8 @@ Calcula rutas de hasta tres escalas
 Exceptua escalas internacionales cuando el viaje es local, en este caso a Colombia
 Uso de Clases de BootStrap
 Uso de Ajax 
+Uso de JQuery
 Uso de SwalAlert para los mensajes
-
 Rutas de Prueba
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
                CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
