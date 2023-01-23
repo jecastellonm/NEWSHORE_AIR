@@ -177,8 +177,8 @@ namespace NEWSHORE_AIR.API
               var pri_U1 = (from o in lstviajes
                             where (o.departureStation == pri0[0] && o.arrivalStation == destino)
                             select o).ToList();
-              pri_U1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-              pri_U1.ForEach(e => transport.flightNumber = e.flightNumber);
+              transport.flightCarrier = pri_U1[0].flightCarrier;
+              transport.flightNumber = pri_U1[0].flightNumber;
 
               pri_U1.ForEach(e => flights.Add(
                   new Flight()
@@ -191,8 +191,8 @@ namespace NEWSHORE_AIR.API
               var pri_1 = (from o in lstviajes
                            where (o.departureStation == origen && o.arrivalStation == pri0[0])
                            select o).ToList();
-              pri_1.ForEach(d => transport.flightCarrier = d.flightCarrier);
-              pri_1.ForEach(d => transport.flightNumber = d.flightNumber);
+              transport.flightCarrier = pri_1[0].flightCarrier;
+              transport.flightNumber = pri_1[0].flightNumber;
 
               pri_1.ForEach(d => flights.Add(
                   new Flight()
@@ -210,8 +210,8 @@ namespace NEWSHORE_AIR.API
                 var pri_U2 = (from o in lstviajes
                               where (o.departureStation == pri0[1] && o.arrivalStation == destino)
                               select o).ToList();
-                pri_U2.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                pri_U2.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = pri_U2[0].flightCarrier;
+                transport.flightNumber = pri_U2[0].flightNumber;
                 pri_U2.ForEach(e => flights.Add(
                     new Flight()
                     {
@@ -223,8 +223,8 @@ namespace NEWSHORE_AIR.API
                 var pri_2 = (from o in lstviajes
                              where (o.departureStation == origen && o.arrivalStation == pri0[1])
                              select o).ToList();
-                pri_2.ForEach(d => transport.flightCarrier = d.flightCarrier);
-                pri_2.ForEach(d => transport.flightNumber = d.flightNumber);
+                transport.flightCarrier = pri_2[0].flightCarrier;
+                transport.flightNumber = pri_2[0].flightNumber;
 
                 pri_2.ForEach(d => flights.Add(
                     new Flight()
@@ -245,8 +245,8 @@ namespace NEWSHORE_AIR.API
               var pri_U1 = (from o in lstviajes
                             where (o.departureStation == pri1[0] && o.arrivalStation == destino)
                             select o).ToList();
-              pri_U1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-              pri_U1.ForEach(e => transport.flightNumber = e.flightNumber);
+              transport.flightCarrier = pri_U1[0].flightCarrier;
+              transport.flightNumber = pri_U1[0].flightNumber;
 
               pri_U1.ForEach(e => flights.Add(
                   new Flight()
@@ -260,8 +260,8 @@ namespace NEWSHORE_AIR.API
                            where (o.departureStation == origen && o.arrivalStation == pri1[0])
                            select o).ToList();
               //select o.departureStation + " " + o.arrivalStation).ToList();
-              pri_1.ForEach(d => transport.flightCarrier = d.flightCarrier);
-              pri_1.ForEach(d => transport.flightNumber = d.flightNumber);
+              transport.flightCarrier = pri_1[0].flightCarrier;
+              transport.flightNumber = pri_1[0].flightNumber;
 
               pri_1.ForEach(d => flights.Add(
                   new Flight()
@@ -280,8 +280,8 @@ namespace NEWSHORE_AIR.API
                 var pri_U2 = (from o in lstviajes
                               where (o.departureStation == pri1[1] && o.arrivalStation == destino)
                               select o).ToList();
-                pri_U2.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                pri_U2.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = pri_U2[0].flightCarrier;
+                transport.flightNumber = pri_U2[0].flightNumber;
 
                 pri_U2.ForEach(e => flights.Add(
                     new Flight()
@@ -295,8 +295,8 @@ namespace NEWSHORE_AIR.API
                 var pri_2 = (from o in lstviajes
                              where (o.departureStation == origen && o.arrivalStation == pri1[1])
                              select o).ToList();
-                pri_2.ForEach(d => transport.flightCarrier = d.flightCarrier);
-                pri_2.ForEach(d => transport.flightNumber = d.flightNumber);
+                transport.flightCarrier = pri_2[0].flightCarrier;
+                transport.flightNumber = pri_2[0].flightNumber;
 
                 pri_2.ForEach(d => flights.Add(
                     new Flight()
@@ -320,8 +320,8 @@ namespace NEWSHORE_AIR.API
               var priU1 = (from o in lstviajes
                            where (o.departureStation == pri3[0] && o.arrivalStation == destino)
                            select o).ToList();
-              priU1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-              priU1.ForEach(e => transport.flightNumber = e.flightNumber);
+              transport.flightCarrier = priU1[0].flightCarrier;
+              transport.flightNumber = priU1[0].flightNumber;
 
               priU1.ForEach(e => flights.Add(
                   new Flight()
@@ -335,8 +335,8 @@ namespace NEWSHORE_AIR.API
               var pri_1 = (from o in lstviajes
                            where (o.departureStation == origen && o.arrivalStation == pri3[0])
                            select o).ToList();
-              pri_1.ForEach(d => transport.flightCarrier = d.flightCarrier);
-              pri_1.ForEach(d => transport.flightNumber = d.flightNumber);
+              transport.flightCarrier = pri_1[0].flightCarrier;
+              transport.flightNumber = pri_1[0].flightNumber;
 
               pri_1.ForEach(d => flights.Add(
                   new Flight()
@@ -354,8 +354,8 @@ namespace NEWSHORE_AIR.API
                 var priU2 = (from o in lstviajes
                              where (o.departureStation == pri3[1] && o.arrivalStation == destino)
                              select o).ToList();
-                priU2.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                priU2.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = priU2[0].flightCarrier;
+                transport.flightNumber = priU2[0].flightNumber;
 
                 priU2.ForEach(e => flights.Add(
                     new Flight()
@@ -369,8 +369,8 @@ namespace NEWSHORE_AIR.API
                 var pri_2 = (from o in lstviajes
                              where (o.departureStation == origen && o.arrivalStation == pri3[1])
                              select o).ToList();
-                pri_2.ForEach(d => transport.flightCarrier = d.flightCarrier);
-                pri_2.ForEach(d => transport.flightNumber = d.flightNumber);
+                transport.flightCarrier = pri_2[0].flightCarrier;
+                transport.flightNumber = pri_2[0].flightNumber;
 
                 pri_2.ForEach(d => flights.Add(
                     new Flight()
@@ -392,8 +392,8 @@ namespace NEWSHORE_AIR.API
               var priU1 = (from o in lstviajes
                            where (o.departureStation == pri4[0] && o.arrivalStation == destino)
                            select o).ToList();
-              priU1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-              priU1.ForEach(e => transport.flightNumber = e.flightNumber);
+              transport.flightCarrier = priU1[0].flightCarrier;
+              transport.flightNumber = priU1[0].flightNumber;
 
               priU1.ForEach(e => flights.Add(
                   new Flight()
@@ -408,8 +408,8 @@ namespace NEWSHORE_AIR.API
                            where (o.departureStation == origen && o.arrivalStation == pri4[0])
                            select o).ToList();
               //select o.departureStation + " " + o.arrivalStation).ToList();
-              pri_1.ForEach(d => transport.flightCarrier = d.flightCarrier);
-              pri_1.ForEach(d => transport.flightNumber = d.flightNumber);
+              transport.flightCarrier = pri_1[0].flightCarrier;
+              transport.flightNumber = pri_1[0].flightNumber;
 
               pri_1.ForEach(d => flights.Add(
                   new Flight()
@@ -427,8 +427,8 @@ namespace NEWSHORE_AIR.API
                 var priU2 = (from o in lstviajes
                              where (o.departureStation == pri4[1] && o.arrivalStation == destino)
                              select o).ToList();
-                priU2.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                priU2.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = priU2[0].flightCarrier;
+                transport.flightNumber = priU2[0].flightNumber;
 
                 priU2.ForEach(e => flights.Add(
                     new Flight()
@@ -442,8 +442,8 @@ namespace NEWSHORE_AIR.API
                 var pri_2 = (from o in lstviajes
                              where (o.departureStation == origen && o.arrivalStation == pri4[1])
                              select o).ToList();
-                pri_2.ForEach(d => transport.flightCarrier = d.flightCarrier);
-                pri_2.ForEach(d => transport.flightNumber = d.flightNumber);
+                transport.flightCarrier = pri_2[0].flightCarrier;
+                transport.flightNumber = pri_2[0].flightNumber;
 
                 pri_2.ForEach(d => flights.Add(
                     new Flight()
@@ -468,8 +468,8 @@ namespace NEWSHORE_AIR.API
             var priU1 = (from o in lstviajes
                          where (o.departureStation == pri_CO[0] && o.arrivalStation == destino)
                          select o).ToList();
-            priU1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-            priU1.ForEach(e => transport.flightNumber = e.flightNumber);
+            transport.flightCarrier = priU1[0].flightCarrier;
+            transport.flightNumber = priU1[0].flightNumber;
 
             priU1.ForEach(e => flights.Add(
                 new Flight()
@@ -492,8 +492,8 @@ namespace NEWSHORE_AIR.API
                            where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
                                    || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_CO[0]))
                            select o).ToList();
-              sdo_0.ForEach(e => transport.flightCarrier = e.flightCarrier);
-              sdo_0.ForEach(e => transport.flightNumber = e.flightNumber);
+              transport.flightCarrier = sdo_0[0].flightCarrier;
+              transport.flightNumber = sdo_0[0].flightNumber;
               sdo_0.ForEach(e => flights.Add(
                   new Flight()
                   {
@@ -502,18 +502,21 @@ namespace NEWSHORE_AIR.API
                     Destination = e.arrivalStation,
                     Price = e.price
                   }));
-              totalPrice3 = (double)(from o in lstviajes
-                                     where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
-                                             || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_CO[0])
-                                     select o.price).Sum();
-              if (pri_CO.Count() > 1)
+              if (sdo_i_0.Count() < 2)
+              {
+                totalPrice3 = (double)(from o in lstviajes
+                                       where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
+                                               || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_CO[0])
+                                       select o.price).Sum();
+              }
+              if (pri_CO.Count() > 0)
               {
                 var sdo_1 = (from o in lstviajes
                              where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
                                      || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_CO[1]))
                              select o).ToList();
-                sdo_1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                sdo_1.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = sdo_1[0].flightCarrier;
+                transport.flightNumber = sdo_1[0].flightNumber;
                 sdo_1.ForEach(e => flights.Add(
                     new Flight()
                     {
@@ -522,10 +525,13 @@ namespace NEWSHORE_AIR.API
                       Destination = e.arrivalStation,
                       Price = e.price
                     }));
-                totalPrice4 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
-                                               || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_CO[1])
-                                       select o.price).Sum();
+                if (pri_CO.Count() < 2)
+                {
+                  totalPrice4 = (double)(from o in lstviajes
+                                         where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
+                                                 || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_CO[1])
+                                         select o.price).Sum();
+                }
               }
               if (sdo_i_0.Count() > 1)
               {
@@ -533,8 +539,8 @@ namespace NEWSHORE_AIR.API
                              where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[1])
                                      || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_CO[1]))
                              select o).ToList();
-                sdo_2.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                sdo_2.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = sdo_2[0].flightCarrier;
+                transport.flightNumber = sdo_2[0].flightNumber;
                 sdo_2.ForEach(e => flights.Add(
                     new Flight()
                     {
@@ -554,8 +560,8 @@ namespace NEWSHORE_AIR.API
                                where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[1])
                                        || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_CO[1]))
                                select o).ToList();
-                  sdo_4.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                  sdo_4.ForEach(e => transport.flightNumber = e.flightNumber);
+                  transport.flightCarrier = sdo_4[0].flightCarrier;
+                  transport.flightNumber = sdo_4[0].flightNumber;
                   sdo_4.ForEach(e => flights.Add(
                       new Flight()
                       {
@@ -601,8 +607,8 @@ namespace NEWSHORE_AIR.API
                            where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
                                    || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[0]))
                            select o).ToList();
-              sdo_0.ForEach(e => transport.flightCarrier = e.flightCarrier);
-              sdo_0.ForEach(e => transport.flightNumber = e.flightNumber);
+              transport.flightCarrier = sdo_0[0].flightCarrier;
+              transport.flightNumber = sdo_0[0].flightNumber;
               sdo_0.ForEach(e => flights.Add(
                   new Flight()
                   {
@@ -611,18 +617,21 @@ namespace NEWSHORE_AIR.API
                     Destination = e.arrivalStation,
                     Price = e.price
                   }));
-              totalPrice3 = (double)(from o in lstviajes
-                                     where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
-                                             || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[0])
-                                     select o.price).Sum();
-              if (pri_EXT.Count() > 1)
+              if (sdo_i_0.Count() < 2)
+              {
+                totalPrice3 = (double)(from o in lstviajes
+                                       where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
+                                               || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[0])
+                                       select o.price).Sum();
+              }
+              if (pri_EXT.Count() > 0)
               {
                 var sdo_00 = (from o in lstviajes
                               where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
-                                      || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[1]))
+                                      || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[0]))
                               select o).ToList();
-                sdo_00.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                sdo_00.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = sdo_00[0].flightCarrier;
+                transport.flightNumber = sdo_00[0].flightNumber;
                 sdo_00.ForEach(e => flights.Add(
                     new Flight()
                     {
@@ -631,10 +640,13 @@ namespace NEWSHORE_AIR.API
                       Destination = e.arrivalStation,
                       Price = e.price
                     }));
-                totalPrice4 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
-                                               || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[1])
-                                       select o.price).Sum();
+                if (pri_EXT.Count() < 2)
+                {
+                  totalPrice4 = (double)(from o in lstviajes
+                                         where (o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
+                                                 || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[0])
+                                         select o.price).Sum();
+                }
               }
               if (sdo_i_0.Count() > 1)
               {
@@ -642,8 +654,10 @@ namespace NEWSHORE_AIR.API
                              where (o.departureStation == origen && o.arrivalStation == sdo_i_0[1])
                                      || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_EXT[0])
                              select o).ToList();
-                sdo_1.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                sdo_1.ForEach(e => transport.flightNumber = e.flightNumber);
+                transport.flightCarrier = sdo_1[0].flightCarrier;
+                transport.flightNumber = sdo_1[0].flightNumber;
+                //sdo_1.ForEach(e => transport.flightCarrier = e.flightCarrier);
+                //sdo_1.ForEach(e => transport.flightNumber = e.flightNumber);
                 sdo_1.ForEach(e => flights.Add(
                     new Flight()
                     {
@@ -662,8 +676,8 @@ namespace NEWSHORE_AIR.API
                                 where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[1])
                                         || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_EXT[1]))
                                 select o).ToList();
-                  sdo_00.ForEach(e => transport.flightCarrier = e.flightCarrier);
-                  sdo_00.ForEach(e => transport.flightNumber = e.flightNumber);
+                  transport.flightCarrier = sdo_00[0].flightCarrier;
+                  transport.flightNumber = sdo_00[0].flightNumber;
                   sdo_00.ForEach(e => flights.Add(
                       new Flight()
                       {
