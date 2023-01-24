@@ -1,26 +1,16 @@
 MZL MED      CTG MAD             MZL BCN             PEI MAD   
                CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
 
-MED PEI               MDE BOG                  BOG BCN
- MDE MZL PEI           MDE CTG BOG               BOG CTG MDE BCN
- MDE CTG MZL PEI       MDE MZL PEI BOG           BOG PEI MZL MDE BCN
-                       MDE MZL CTG BOG           BOG CTG MZL MDE BCN
+MED PEI               MDE BOG                  BOG BCN                    MED MAD
+ MDE MZL PEI           MDE CTG BOG               BOG CTG MDE BCN             MDE CTG BOG MAD
+ MDE CTG MZL PEI       MDE MZL PEI BOG           BOG PEI MZL MDE BCN         MDE MZL PEI BOG MAD
+                       MDE MZL CTG BOG           BOG CTG MZL MDE BCN         MDE MZL CTG BOG MAD
 
-PEI BCN                    MZL MEX               MZL MAD
- PEI MZL MDE BCN             MZL PEI BOG MEX       MZL CTG BOG MAD
- PEI MZL CTG MDE BCN         MZL CTG BOG MEX       MZL PEI BOG MAD
+PEI BCN                 BCN PEI              PEI CAN              MZL MEX               MZL MAD
+ PEI MZL MDE BCN          BCN MDE MZL PEI      PEI MZL CTG CAN      MZL PEI BOG MEX       MZL CTG BOG MAD
+ PEI MZL CTG MDE BCN                           PEI BOG CTG CAN      MZL CTG BOG MEX       MZL PEI BOG MAD
 
-BCN PEI
- BCN MDE MZL PEI
-
-MED MAD
-MED CTG BOG MAD
-MDE MZL PEI BOG MAD
-MDE MZL CTG BOG MAD
-
-
-
-
+[{"departureStation":"MZL","arrivalStation":"MDE","flightCarrier":"CO","flightNumber":"8001","price":200},{"departureStation":"MZL","arrivalStation":"CTG","flightCarrier":"CO","flightNumber":"8002","price":200},{"departureStation":"PEI","arrivalStation":"BOG","flightCarrier":"CO","flightNumber":"8003","price":200},{"departureStation":"MDE","arrivalStation":"BCN","flightCarrier":"CO","flightNumber":"8004","price":500},{"departureStation":"CTG","arrivalStation":"CAN","flightCarrier":"CO","flightNumber":"8005","price":300},{"departureStation":"BOG","arrivalStation":"MAD","flightCarrier":"CO","flightNumber":"8006","price":500},{"departureStation":"BOG","arrivalStation":"MEX","flightCarrier":"CO","flightNumber":"8007","price":300},{"departureStation":"MZL","arrivalStation":"PEI","flightCarrier":"CO","flightNumber":"8008","price":200},{"departureStation":"MDE","arrivalStation":"CTG","flightCarrier":"CO","flightNumber":"8009","price":200},{"departureStation":"BOG","arrivalStation":"CTG","flightCarrier":"CO","flightNumber":"8010","price":200},{"departureStation":"MDE","arrivalStation":"MZL","flightCarrier":"CO","flightNumber":"9001","price":200},{"departureStation":"CTG","arrivalStation":"MZL","flightCarrier":"CO","flightNumber":"9002","price":200},{"departureStation":"BOG","arrivalStation":"PEI","flightCarrier":"CO","flightNumber":"9003","price":200},{"departureStation":"BCN","arrivalStation":"MDE","flightCarrier":"ES","flightNumber":"9004","price":500},{"departureStation":"CAN","arrivalStation":"CTG","flightCarrier":"MX","flightNumber":"9005","price":300},{"departureStation":"MAD","arrivalStation":"BOG","flightCarrier":"ES","flightNumber":"9006","price":500},{"departureStation":"MEX","arrivalStation":"BOG","flightCarrier":"MX","flightNumber":"9007","price":300},{"departureStation":"PEI","arrivalStation":"MZL","flightCarrier":"CO","flightNumber":"9008","price":200},{"departureStation":"CTG","arrivalStation":"MDE","flightCarrier":"CO","flightNumber":"9009","price":200},{"departureStation":"CTG","arrivalStation":"BOG","flightCarrier":"CO","flightNumber":"9010","price":200}]
 
 
 

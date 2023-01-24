@@ -31,34 +31,48 @@
               htmlAttributes: new { @class = "form-control", @id = "Destino" })
         </div>
       </div>
-      <div class="col-12 col-xl-6 col-lg-6">
-        <div class="form-group">
-          @Html.Label("Precio Total Viaje*:")
-          @Html.DisplayFor(x => x.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+      @if (Model.Flights is not null)
+      {
+        <div class="col-12 col-xl-6 col-lg-6">
+          <div class="form-group">
+            @Html.Label("Origen:  ")
+            @Html.DisplayFor(x => x.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-xl-6 col-lg-6">
-        <div class="form-group">
-          @if (Model.Flights is not null)
-          {
-            @foreach (var item in Model.Flights)
-            {
-              <div>
-                @Html.Label("Origen:  ")
-                @Html.DisplayFor(modelitem => item.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Origin" })
-                @Html.Label("    Destino:  ")
-                @Html.DisplayFor(modelitem => item.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Destination" })
-                @Html.Label("    Aerolinea:  ")
-                @Html.DisplayFor(modelitem => item.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightCarrier" })
-                @Html.Label("    Numero Vuelo:  ")
-                @Html.DisplayFor(modelitem => item.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-                @Html.Label("    Precio: ")
-                @Html.DisplayFor(modelitem => item.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
-              </div>
-            }
-          }
+        <div class="col-12 col-xl-6 col-lg-6">
+          <div class="form-group">
+            @Html.Label("Destino:  ")
+            @Html.DisplayFor(x => x.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+          </div>
         </div>
-      </div>
+        <div class="col-12 col-xl-6 col-lg-6">
+          <div class="form-group">
+            @Html.Label("Precio Total Viaje:")
+            @Html.DisplayFor(x => x.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+          </div>
+        </div>
+        <div class="col-12 col-xl-6 col-lg-6">
+          <div class="form-group">
+          </div>
+        </div>
+        @foreach (var item in Model.Flights)
+        {
+          <div class="col-12 col-xl-6 col-lg-6">
+            <div class="form-group">
+              @Html.Label("Origen:  ")
+              @Html.DisplayFor(modelitem => item.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Origin" })
+              @Html.Label("    Destino:  ")
+              @Html.DisplayFor(modelitem => item.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Destination" })
+              @Html.Label("    Aerolinea:  ")
+              @Html.DisplayFor(modelitem => item.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightCarrier" })
+              @Html.Label("    Numero Vuelo:  ")
+              @Html.DisplayFor(modelitem => item.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+              @Html.Label("    Precio: ")
+              @Html.DisplayFor(modelitem => item.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+            </div>
+          </div>
+        }
+      }
       <div class="col-12 mt-2">
         <div class="button-group form-footer">
           <div class="start">
