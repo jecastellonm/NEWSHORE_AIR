@@ -9,7 +9,6 @@ $(function () {
       swal("Origen y Destino deben ser diferentes !", {
         icon: "warning",
       });
-      return;
     }
     else {
       $.ajax({

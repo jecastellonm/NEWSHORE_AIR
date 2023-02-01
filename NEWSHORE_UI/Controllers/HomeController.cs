@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using NEWSHORE_AIR.DataAccess;
+using Transport = NEWSHORE_AIR.DataAccess.Transport;
+using Flight = NEWSHORE_AIR.DataAccess.Flight;
 
 namespace NEWSHORE_UI.Controllers
 {
@@ -57,13 +59,45 @@ namespace NEWSHORE_UI.Controllers
         {
           var viewModelJourneysDb = new JourneyIndexData();
           viewModelJourneysDb.JourneysDb = _context.Journeyys;
-          var journeysDb = _context.Journeyys;
-          var travelDB = (from o in journeysDb
-                       where (o.Destination == origin && o.Origin == destination)
-                       select o).ToList();
-          if (travelDB.Count() > 0)
+          var journeysDbs = _context.Journeyys;
+          var flight = _context.Flights;
+          var transport = _context.Transports;
+          var travelDB = (from o in journeysDbs
+                          where (o.Destination == destination && o.Origin == origin)
+                          select o).ToList();
+          var travelDB2 = journeysDbs.Where(t => t.Origin == origin && t.Destination == destination).ToList();
+          if (travelDB2.Count() == 0)
           {
-            return View(travelDB);
+            return View(Viajes);
+          }
+          else if (travelDB.Count() < 0)
+          {
+            List<Flight> flights = new List<Flight>();
+            List<Transport> transports = new List<Transport>();
+
+            travelDB2.ForEach(e => transports.Add(
+                new Transport()
+                {
+                  flightCarrier = e.Origin,
+                  flightNumber = e.Destination
+                }));
+            travelDB2.ForEach(e => flights.Add(
+                new Flight()
+                {
+                  Transport = transports[0],
+                  Origin = e.Origin,
+                  Destination = e.Destination,
+                  Price = e.Price
+                }));
+            travelDB2.ForEach(e => Viajes.Add(
+              new Journeyy()
+              {
+                Flights = (ICollection<Flight>)flights[0],
+                Origin = e.Origin,
+                Destination = e.Destination,
+                Price = e.Price
+              }));
+              return View(Viajes);
           }
           else
           {
@@ -87,6 +121,7 @@ namespace NEWSHORE_UI.Controllers
           //return View(ViajeIDA);
           return View(Viajes);
         }
+        return View(Viajes);
       }
       catch (Exception ex)
       {
@@ -94,7 +129,6 @@ namespace NEWSHORE_UI.Controllers
         _logger.LogError(Message);
         return View(Viajes);
       }
-      return View();
     }
 
 
