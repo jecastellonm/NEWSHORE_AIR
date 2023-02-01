@@ -1,98 +1,98 @@
-﻿@*@model NewShore*@
-@using NEWSHORE_AIR.DataAccess
-@model Journeyy
+﻿@using NEWSHORE_AIR.DataAccess
+@*@model Journeyy*@
+@model IEnumerable<Journeyy>
 @{
   ViewData["Title"] = "Home Page";
 }
 @section scripts {
-  @*<script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/js/site.js?v=7eVd55-cX9DMGcvFbVpb8MZj9zdV-q5C2UVgMBZu7HM"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="~/js/site.js" type="text/javascript"></script>
 }
 <div class="text-center">
-  <h1 class="display-4">NEWSHORE</h1>
-  <p></p>
+  <h1 class="line-height:0">NEW SHORE AIR</h1>
   @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "FormJourneys" }))
   {
     <div class="row mt-2">
-      <div class="col-12 col-xl-6 col-lg-6">
-        <div class="form-group">
-          @Html.Label("Origen*:")
-          @Html.DropDownListFor(x => x.Origin, (IEnumerable<SelectListItem>)ViewBag.origenes,
-              htmlAttributes: new { @class = "form-control", @id = "Origen" })
-        </div>
+      <div class="col-12 col-xl-6 col-lg-6 line-height:0">
+        @Html.Label("Origen*:")
+        @Html.DropDownList("Origenes", (IEnumerable<SelectListItem>)ViewBag.origenes,
+            htmlAttributes: new { @class = "form-control", @id = "Origen" })
       </div>
-      <div class="col-12 col-xl-6 col-lg-6">
-        <div class="form-group">
-          @Html.Label("Destino*:")
-          @Html.DropDownListFor(x => x.Destination, (IEnumerable<SelectListItem>)ViewBag.destinos,
-              htmlAttributes: new { @class = "form-control", @id = "Destino" })
-        </div>
+      <div class="col-12 col-xl-6 col-lg-6 line-height:0">
+        @Html.Label("Destino*:")
+        @Html.DropDownList("Destinos", (IEnumerable<SelectListItem>)ViewBag.destinos,
+            htmlAttributes: new { @class = "form-control", @id = "Destino" })
       </div>
-      @if (Model.Flights is not null)
-      {
-        <div class="col-12 col-xl-6 col-lg-6">
-          <div class="form-group">
-            @Html.Label("Origen:  ")
-            @Html.DisplayFor(x => x.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
-          </div>
-        </div>
-        <div class="col-12 col-xl-6 col-lg-6">
-          <div class="form-group">
-            @Html.Label("Destino:  ")
-            @Html.DisplayFor(x => x.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
-          </div>
-        </div>
-        <div class="col-12 col-xl-6 col-lg-6">
-          <div class="form-group">
-            @Html.Label("Precio Total Viaje:")
-            @Html.DisplayFor(x => x.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
-          </div>
-        </div>
-        <div class="col-12 col-xl-6 col-lg-6">
-          <div class="form-group">
-          </div>
-        </div>
-        @foreach (var item in Model.Flights)
-        {
-          <div class="col-12 col-xl-6 col-lg-6">
-            <div class="form-group">
-              @Html.Label("Origen:  ")
-              @Html.DisplayFor(modelitem => item.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Origin" })
-              @Html.Label("    Destino:  ")
-              @Html.DisplayFor(modelitem => item.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Destination" })
-              @Html.Label("    Aerolinea:  ")
-              @Html.DisplayFor(modelitem => item.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightCarrier" })
-              @Html.Label("    Numero Vuelo:  ")
-              @Html.DisplayFor(modelitem => item.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-              @Html.Label("    Precio: ")
-              @Html.DisplayFor(modelitem => item.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
-            </div>
-          </div>
-        }
-      }
       <div class="col-12 mt-2">
         <div class="button-group form-footer">
           <div class="start">
-            @*@Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })*@
-            @*@Html.ActionLink("Calcular Ruta", "Index", "Home", new { origin = "MZL", destination = "MEX" }, new { onclick = string.Format("CalcularRuta(event, '" + "MDE" + "','" + "MAD" + "'); event.preventDefault();"), @class = "btn btn-primary", id = "CalcularRuta" })*@
-            @*@Html.ActionLink("Calcular Ruta", "Index", "Home", new { origin = "Param1", destination = "Param2" }, new { onclick = string.Format("fCalcularRuta(event); event.preventDefault();"), @class = "btn btn-primary", id = "alCalcularRuta" })*@
-            @*@Html.ActionLink("Calcular Ruta", "Index", "Home", null, new { onclick = string.Format("fCalcularRuta(event); event.preventDefault();"), @class = "btn btn-primary", id = "alCalcularRuta" })*@
             @Html.ActionLink("Calcular Ruta", "Index", "Home", new { origin = "Param1", destination = "Param2" }, new { @class = "btn btn-primary", id = "alCalcularRuta" })
-            @*, new { onclick = string.Format("CalcularRuta(event, '" + Model.Origin + "','" + Model.Destination + "'); event.preventDefault();"), @class = "btn btn-primary", id = "CalcularRuta" })*@
           </div>
-          @*<div class="end">
-              <button class="btn btn-primary" id="btnSubmit" type="submit">
-                Calcular Ruta
-              </button>
-            </div>*@
         </div>
       </div>
-      @*<div>
-            @Html.ActionLink("Regresar", "Index", "Mod", null, new { @class = "btn btn-link" })
-        </div>*@
+      <div class="col-12 col-xl-12 col-lg-12">
+        <div class="form-group">
+        </div>
+      </div>
+      <div class="col-12 col-xl-12 col-lg-12">
+        <div class="form-group">
+        </div>
+      </div>
+      @if (Model is not null)
+      {
+        int x = 0;
+        int y = 1;
+        string jj = "IDA";
+        string jjv = "VUELTA";
+
+        @foreach (var item in Model)
+        {
+          @if (item.Flights is not null)
+          {
+            @if (@x == 0 || @x % 2 == 0)
+            {<strong>@(@jj)</strong>; y++;
+            }
+            else
+            {<strong>@(@jjv)</strong>; y++;
+            }
+            <div class="col-12 col-xl-3 col-lg-3 font-weight-bolder">
+              @Html.Label("Origen:  ")
+              @Html.DisplayFor(modelitem => item.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+            </div>
+            <div class="col-sm-12 col-xl-3 col-lg-3 font-weight-bolder">
+              @Html.Label("Destino:  ")
+              @Html.DisplayFor(modelitem => item.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+            </div>
+            <div class="col-12 col-xl-3 col-lg-3 font-weight-bolder">
+              @Html.Label("Precio Total Viaje:")
+              @Html.DisplayFor(modelitem => item.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+            </div>
+            int j = 0;
+            int e = 1;
+            string es = "a Alternativa  ";
+            @foreach (var item2 in item.Flights)
+            {
+              <div class="col-12 col-xl-12 col-lg-12 line-height:0">
+                @if (@j == 0 || item.Flights.Count()-j==item.Flights.Count())
+                {<strong>@((@e + @es))</strong>; e++;
+                }
+                @Html.Label("Origen:  ")
+                @Html.DisplayFor(modelitem => item2.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Origin" })
+                @Html.Label("    Destino:  ")
+                @Html.DisplayFor(modelitem => item2.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Destination" })
+                @Html.Label("    Aerolinea:  ")
+                @Html.DisplayFor(modelitem => item2.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightCarrier" })
+                @Html.Label("    Numero Vuelo:  ")
+                @Html.DisplayFor(modelitem => item2.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+                @Html.Label("    Precio: ")
+                @Html.DisplayFor(modelitem => item2.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+              </div>
+              j++;
+            }
+          }
+          x++;
+        }
+      }
     </div>
   }
 </div>

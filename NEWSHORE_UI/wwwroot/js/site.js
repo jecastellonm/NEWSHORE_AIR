@@ -1,8 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-  
-// Write your JavaScript code.
-
+﻿
 $(function () {
 
   $("#alCalcularRuta").click(function () {
@@ -13,6 +9,7 @@ $(function () {
       swal("Origen y Destino deben ser diferentes !", {
         icon: "warning",
       });
+      return;
     }
     else {
       $.ajax({
@@ -32,22 +29,18 @@ $(function () {
             icon: "warning",
           });
           console.log('Failure:  ' + response.responseText);
-          //alert('Failure:  ' + response.responseText);
         },
         error: function (response) {
           console.log('Error:  ' + response.responseText);
-          //alert('Error:  ' + response.responseText);
         } 
       });
     }
   });
 });
 
-//function fCalcularRuta(event, origin, destination) {
 function fCalcularRuta(event) {
   let ori = $("#Origen").val();
   let des = $("#Destino").val();
-  //alCalcularRuta.href = alCalcularRuta.href.replace("param1", ori).replace("param2", des);
   if (ori == des) {
     swal("Origen y Destino deben ser diferentes !", {
       icon: "warning",
@@ -71,11 +64,9 @@ function fCalcularRuta(event) {
           icon: "warning",
         });
         console.log('Failure:  ' + response.responseText);
-        //alert('Failure:  ' + response.responseText);
       },
       error: function (response) {
         console.log('Error:  ' + response.responseText);
-        //alert('Error:  ' + response.responseText);
       }
     });
   }

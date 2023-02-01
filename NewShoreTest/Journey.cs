@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace NEWSHORE_AIR.DataAccess
+namespace NewShoreTest
 {
-  public class Flight
+  class Journey
   {
-    public int FlightID { get; set; }
-    public Transport Transport { get; set; }
+    public int ID { get; set; }
+    public ICollection<Flight> Flights { get; set; }
     public string Origin { get; set; }
     public string Destination { get; set; }
     public double Price { get; set; }
-    public Journeyy Journey { get; set; }
   }
 }

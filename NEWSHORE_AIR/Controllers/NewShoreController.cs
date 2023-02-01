@@ -76,5 +76,15 @@ namespace NEWSHORE_AIR.Controllers
       return Rutass;
     }
 
+    [HttpGet]
+    [Route("RutasRegreso")]
+    public Journeyy RutasRegreso()
+    {
+      Journeyy RutasRegreso = _api_Get.RutasRegreso();
+      Message = $"Get RutasRegreso Successfull {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}";
+      _logger.LogInformation(Message);
+      return RutasRegreso;
+    }
+
   }
 }

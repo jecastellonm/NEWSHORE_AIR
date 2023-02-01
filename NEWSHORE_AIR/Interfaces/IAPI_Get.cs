@@ -8,9 +8,10 @@ namespace NEWSHORE_AIR.Interfaces
 {
   public interface IAPI_Get
   {
-    dynamic Get(string url);
+    List<ResponseNewShoreAPI> Get(string url);
     List<string> Origins(string? url = null);
     List<string> Destinations(string? url = null);
     Journeyy Rutas(string? url = null, string? origen = null, string? destino = null);
+    Journeyy RutasRegreso(string? url = null, string? origen = null, string? destino = null);
     }
 }

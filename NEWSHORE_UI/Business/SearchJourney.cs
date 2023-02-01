@@ -28,7 +28,7 @@ namespace NEWSHORE_UI.Business
       try
       {
         Journeyy journey = new Journeyy();
-        journey = (Journeyy)_api_Get.Rutas(origen, destino);
+        journey = (Journeyy)_api_Get.RutasRegreso(origen, destino);
         return journey;
       }
       catch (Exception ex)

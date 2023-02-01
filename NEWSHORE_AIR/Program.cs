@@ -9,7 +9,13 @@ using System.Threading.Tasks;
 
 namespace NEWSHORE_AIR
 {
-    public class Program
+  static class Constants
+  {
+    public const string RUTA_NIVEL_0 = "Rutas:Unicas";
+    public const string RUTA_NIVEL_1 = "Rutas:Multiples";
+    public const string RUTA_NIVEL_2 = "Rutas:MultipyRetorno";
+  }
+  public class Program
     {
         public static void Main(string[] args)
         {

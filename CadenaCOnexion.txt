@@ -1,0 +1,6 @@
+SOUTHERLAND 
+
+NICE
+ACTIMIZE
+
+Data Source=J-E-C-M\SQLEXPRESS;Initial Catalog=OperadorPersonas;Integrated Security=True

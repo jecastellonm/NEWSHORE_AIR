@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NEWSHORE_AIR.DataAccess
+namespace NewShoreTest
 {
   public enum FlightCarrier
   {

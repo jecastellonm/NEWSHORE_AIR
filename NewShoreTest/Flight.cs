@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NEWSHORE_UI.Models
+namespace NewShoreTest
 {
   public class Flight
   {
@@ -12,8 +12,5 @@ namespace NEWSHORE_UI.Models
     public string Origin { get; set; }
     public string Destination { get; set; }
     public double Price { get; set; }
-
-    //public int JourneyID { get; set; }
-    public ICollection<JourneyyFlight> JourneyyFlights { get; set; }
   }
 }

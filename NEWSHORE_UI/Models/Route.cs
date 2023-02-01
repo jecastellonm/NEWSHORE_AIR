@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace NEWSHORE_UI.Models
 {
-    public class NewShore
+    public class Route
     {
+        public int RouteID { get; set; }
         public string departureStation { get; set; }
         public string arrivalStation { get; set; }
         public string flightCarrier { get; set; }

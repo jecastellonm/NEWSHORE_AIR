@@ -1,16 +1,145 @@
-MZL MED      CTG MAD             MZL BCN             PEI MAD   
-               CTG BOG MAD          MZL MDE BCN        PEI BOG MAD
+MZL MED     MED CTG    PEI CTG          MZL BOG             CTG MAD             MZL BCN             PEI MAD            PEI MEX   
+                          PEI MZL CTG     MZL CTG BOG         CTG BOG MAD         MZL MDE BCN         PEI BOG MAD        PEI BOG MEX
+                          PEI BOG CTG     MZL PEI BOG 
+                                          MZL MDE CTG BOG
 
-MED PEI               MDE BOG                  BOG BCN                    MED MAD
- MDE MZL PEI           MDE CTG BOG               BOG CTG MDE BCN             MDE CTG BOG MAD
+MED PEI               MDE BOG                  BOG BCN                    MED MAD                   MAD MED
+ MDE MZL PEI           MDE CTG BOG               BOG CTG MDE BCN             MDE CTG BOG MAD          MAD BOG CTG MDE
  MDE CTG MZL PEI       MDE MZL PEI BOG           BOG PEI MZL MDE BCN         MDE MZL PEI BOG MAD
                        MDE MZL CTG BOG           BOG CTG MZL MDE BCN         MDE MZL CTG BOG MAD
 
-PEI BCN                 BCN PEI              PEI CAN              MZL MEX               MZL MAD
- PEI MZL MDE BCN          BCN MDE MZL PEI      PEI MZL CTG CAN      MZL PEI BOG MEX       MZL CTG BOG MAD
- PEI MZL CTG MDE BCN                           PEI BOG CTG CAN      MZL CTG BOG MEX       MZL PEI BOG MAD
+PEI BCN                 BCN PEI              PEI CAN              MZL MEX               MEX MZL               MZL MAD
+  PEI MZL MDE BCN         BCN MDE MZL PEI      PEI MZL CTG CAN      MZL PEI BOG MEX       MEX BOG PEI MZL       MZL CTG BOG MAD
+  PEI MZL CTG MDE BCN                          PEI BOG CTG CAN      MZL CTG BOG MEX       MEX BOG CTG MZL       MZL PEI BOG MAD
 
 [{"departureStation":"MZL","arrivalStation":"MDE","flightCarrier":"CO","flightNumber":"8001","price":200},{"departureStation":"MZL","arrivalStation":"CTG","flightCarrier":"CO","flightNumber":"8002","price":200},{"departureStation":"PEI","arrivalStation":"BOG","flightCarrier":"CO","flightNumber":"8003","price":200},{"departureStation":"MDE","arrivalStation":"BCN","flightCarrier":"CO","flightNumber":"8004","price":500},{"departureStation":"CTG","arrivalStation":"CAN","flightCarrier":"CO","flightNumber":"8005","price":300},{"departureStation":"BOG","arrivalStation":"MAD","flightCarrier":"CO","flightNumber":"8006","price":500},{"departureStation":"BOG","arrivalStation":"MEX","flightCarrier":"CO","flightNumber":"8007","price":300},{"departureStation":"MZL","arrivalStation":"PEI","flightCarrier":"CO","flightNumber":"8008","price":200},{"departureStation":"MDE","arrivalStation":"CTG","flightCarrier":"CO","flightNumber":"8009","price":200},{"departureStation":"BOG","arrivalStation":"CTG","flightCarrier":"CO","flightNumber":"8010","price":200},{"departureStation":"MDE","arrivalStation":"MZL","flightCarrier":"CO","flightNumber":"9001","price":200},{"departureStation":"CTG","arrivalStation":"MZL","flightCarrier":"CO","flightNumber":"9002","price":200},{"departureStation":"BOG","arrivalStation":"PEI","flightCarrier":"CO","flightNumber":"9003","price":200},{"departureStation":"BCN","arrivalStation":"MDE","flightCarrier":"ES","flightNumber":"9004","price":500},{"departureStation":"CAN","arrivalStation":"CTG","flightCarrier":"MX","flightNumber":"9005","price":300},{"departureStation":"MAD","arrivalStation":"BOG","flightCarrier":"ES","flightNumber":"9006","price":500},{"departureStation":"MEX","arrivalStation":"BOG","flightCarrier":"MX","flightNumber":"9007","price":300},{"departureStation":"PEI","arrivalStation":"MZL","flightCarrier":"CO","flightNumber":"9008","price":200},{"departureStation":"CTG","arrivalStation":"MDE","flightCarrier":"CO","flightNumber":"9009","price":200},{"departureStation":"CTG","arrivalStation":"BOG","flightCarrier":"CO","flightNumber":"9010","price":200}]
+
+
+new Route { departureStation = "MZL", arrivalStation = "CTG", flightCarrier = "CO",flightNumber = "8002", price = 200},
+new Route { departureStation = "PEI", arrivalStation = "BOG", flightCarrier = "CO",flightNumber = "8003", price = 200},
+new Route { departureStation = "MDE", arrivalStation = "BCN", flightCarrier = "CO",flightNumber = "8004", price = 500},
+new Route { departureStation = "CTG", arrivalStation = "CAN", flightCarrier = "CO",flightNumber = "8005", price = 300},
+new Route { departureStation = "BOG", arrivalStation = "MAD", flightCarrier = "CO",flightNumber = "8006", price = 500},
+new Route { departureStation = "BOG", arrivalStation = "MEX", flightCarrier = "CO",flightNumber = "8007", price = 300},
+new Route { departureStation = "MZL", arrivalStation = "PEI", flightCarrier = "CO",flightNumber = "8008", price = 200},
+new Route { departureStation = "MDE", arrivalStation = "CTG", flightCarrier = "CO",flightNumber = "8009", price = 200},
+new Route { departureStation = "BOG", arrivalStation = "CTG", flightCarrier = "CO",flightNumber = "8010", price = 200},
+new Route { departureStation = "MDE", arrivalStation = "MZL", flightCarrier = "CO",flightNumber = "9001", price = 200},
+new Route { departureStation = "CTG", arrivalStation = "MZL", flightCarrier = "CO",flightNumber = "9002", price = 200},
+new Route { departureStation = "BOG", arrivalStation = "PEI", flightCarrier = "CO",flightNumber = "9003", price = 200},
+new Route { departureStation = "BCN", arrivalStation = "MDE", flightCarrier = "ES",flightNumber = "9004", price = 500},
+new Route { departureStation = "CAN", arrivalStation = "CTG", flightCarrier = "MX",flightNumber = "9005", price = 300},
+new Route { departureStation = "MAD", arrivalStation = "BOG", flightCarrier = "ES",flightNumber = "9006", price = 500},
+new Route { departureStation = "MEX", arrivalStation = "BOG", flightCarrier = "MX",flightNumber = "9007", price = 300},
+new Route { departureStation = "PEI", arrivalStation = "MZL", flightCarrier = "CO",flightNumber = "9008", price = 200},
+new Route { departureStation = "CTG", arrivalStation = "MDE", flightCarrier = "CO",flightNumber = "9009", price = 200},
+new Route { departureStation = "CTG", arrivalStation = "BOG", flightCarrier = "CO",flightNumber = "9010", price = 200},
+
+
+for (int x = pri3.Length-1; x >=0 ;x--) if (pri3[x] == null) pri3[x].Remove(x);
+
+      newTarget = flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA ?
+                            lstviajes.Where(x => x.departureStation == destino && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                                .Select(x => x.arrivalStation).ToList()
+                            : lstviajes.Where(x => x.departureStation == destino && x.flightCarrier == flightCarrierDestino[0])
+                                .Select(x => x.arrivalStation).ToList();
+
+
+      pri_LOCAL = lstviajes.Where(x => x.arrivalStation == destino && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                  .Select(x => x.departureStation).ToList();
+      pri_EXT = lstviajes.Where(x => x.arrivalStation == destino && x.flightCarrier != FLIGHT_CARRIER_COLOMBIA)
+                .Select(x => x.departureStation).ToList();
+      pri_LOCAL_VUELTA = lstviajes.Where(x => x.departureStation == origen && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                         .Select(x => x.arrivalStation).ToList();
+      pri_EXT_VUELTA = lstviajes.Where(x => x.departureStation == origen && x.flightCarrier != FLIGHT_CARRIER_COLOMBIA)
+                        .Select(x => x.arrivalStation).ToList();
+
+
+      pri_LOCAL_O = lstviajes.Where(x => x.arrivalStation == origen && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                  .Select(x => x.departureStation).ToList();
+      pri_EXT_O = lstviajes.Where(x => x.arrivalStation == origen && x.flightCarrier != FLIGHT_CARRIER_COLOMBIA)
+                .Select(x => x.departureStation).ToList();
+      pri_LOCAL_VUELTA_D = lstviajes.Where(x => x.departureStation == destino && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                         .Select(x => x.arrivalStation).ToList();
+      pri_EXT_VUELTA_D = lstviajes.Where(x => x.departureStation == destino && x.flightCarrier != FLIGHT_CARRIER_COLOMBIA)
+                        .Select(x => x.arrivalStation).ToList();
+
+
+
+
+      pri0 = pri_LOCAL.Count() > 0 ?
+                  lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_LOCAL[0] && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                            .Select(x => x.arrivalStation).ToArray() : pri0 = new string[] { };
+      pri1 = pri_LOCAL.Count() > 1 ?
+              lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_LOCAL[1] && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                                  .Select(x => x.arrivalStation).ToArray() : pri1 = new string[] { };
+      pri3 = pri_EXT.Count() > 0 ?
+          (lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_EXT[0])
+                              .Select(x => x.arrivalStation).ToArray()) : pri3 = Array.Empty<string>();
+      pri4 = pri_EXT.Count() > 1 ?
+              lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_EXT[1])
+                                  .Select(x => x.arrivalStation).ToArray() : pri4 = Array.Empty<string>();
+
+
+
+
+      int a = 0;
+      if (pri_LOCAL.Count() > 0)
+      {
+        for (int i = 0; i < pri_LOCAL.Count(); i++)
+        {
+          pri00 = pri_LOCAL.Count() > 0 ?
+                lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_LOCAL[i] 
+                                && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                         .Select(x => x.arrivalStation).ToArray() : pri00 = new string[] { };
+          if (pri00.Length > 0) pri0[a++] = pri00[0]; else pri0 = new string[] { };
+        }
+      }
+      else { pri0 = Array.Empty<string>(); }
+
+
+      if (pri_EXT.Count() > 0)
+      {
+        a = 0;
+        for (int i = 0; i < pri_EXT.Count(); i++)
+        {
+          pri11 = pri_EXT.Count() > 0 ?
+                lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_EXT[i]
+                                && x.flightCarrier != FLIGHT_CARRIER_COLOMBIA)
+                         .Select(x => x.arrivalStation).ToArray() : pri11 = new string[] { };
+          if (pri11.Length > 0) pri1[a++] = pri11[0]; else pri1 = new string[] { };
+        }
+      }
+      else { pri1 = Array.Empty<string>(); }
+
+
+      if (pri_LOCAL_VUELTA.Count() > 0)
+      {
+        a = 0;
+        for (int i = 0; i < pri_LOCAL_VUELTA.Count(); i++)
+        {
+          pri33 = pri_LOCAL_VUELTA.Count() > 0 ?
+                lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_LOCAL_VUELTA[i]
+                                    && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
+                         .Select(x => x.arrivalStation).ToArray() : pri33 = Array.Empty<string>();
+          if (pri33.Length > 0) pri3[a++] = pri33[0]; else pri3 = Array.Empty<string>();
+        }
+      }
+      else { pri3 = Array.Empty<string>(); }
+
+      if (pri_EXT_VUELTA.Count() > 0)
+      {
+        a = 0;
+        for (int i = 0; i < pri_EXT_VUELTA.Count(); i++)
+        {
+          pri44 = pri_EXT_VUELTA.Count() > 0 ?
+                lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_EXT_VUELTA[i]
+                                      && x.flightCarrier != FLIGHT_CARRIER_COLOMBIA)
+                         .Select(x => x.arrivalStation).ToArray() : pri44 = Array.Empty<string>();
+          if (pri44.Length > 0) pri4[a++] = pri44[0]; else pri4 = Array.Empty<string>();
+        }
+      }
+      else { pri4 = Array.Empty<string>(); }
 
 
 
@@ -104,3 +233,23 @@ PEI BCN                 BCN PEI              PEI CAN              MZL MEX       
       //    var priOList = (from o in lstviajes where o.departureStation == origen && o.arrivalStation == escala1 select o).First();
       //    var sdoOList = (from o in lstviajes where o.departureStation == escala1 && o.arrivalStation == destino select o).First();
       //}
+
+
+
+
+    //[Test]
+    //public void IndexGetJourneys()
+    //{
+    //  // Arrange
+    //  var controller = new HomeController(_context);
+    //  controller.Request = new HttpRequestMessage();
+    //  controller.Configuration = new HttpConfiguration();
+
+    //  // Act
+    //  var response = controller.Index(_context);
+
+    //  // Assert
+    //  Journey journey;
+    //  Assert.IsTrue(response.TryGetContentValue<Journey>(out journey));
+    //  Assert.AreEqual(10, product.Id);
+    //}
