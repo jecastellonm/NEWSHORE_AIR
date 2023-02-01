@@ -36,13 +36,13 @@ namespace NewShoreTest
       journey.Destination = "MDE";
       journey.Origin = "MZL";
       journey.Price = 200;
-      transport.flightCarrier = null;
-      transport.flightNumber = null;
+      transport.flightCarrier = "";
+      transport.flightNumber = "";
       journey.Flights.Add(new Flight
       {
         Transport = transport,
-        Origin = null,
-        Destination = null,
+        Origin = "",
+        Destination = "",
         Price = 200
       });
 

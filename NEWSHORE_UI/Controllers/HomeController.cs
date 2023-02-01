@@ -41,7 +41,6 @@ namespace NEWSHORE_UI.Controllers
     /// <returns>Vista NEWSHORE</returns>
     public IActionResult Index(string? origin, string? destination)
     {
-      IActionResult result = null;
       try
       {
 
@@ -95,7 +94,7 @@ namespace NEWSHORE_UI.Controllers
         _logger.LogError(Message);
         return View(Viajes);
       }
-      return result;
+      return View();
     }
 
 
