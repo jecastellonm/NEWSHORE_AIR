@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using NEWSHORE_AIR.DataAccess;
 using Transport = NEWSHORE_AIR.DataAccess.Transport;
 using Flight = NEWSHORE_AIR.DataAccess.Flight;
+using Microsoft.EntityFrameworkCore;
+using Journeys = NEWSHORE_AIR.DataAccess.Journeys;
 
 namespace NEWSHORE_UI.Controllers
 {
@@ -22,6 +24,8 @@ namespace NEWSHORE_UI.Controllers
     private readonly ILogger<HomeController> _logger;
     private readonly IAPI_Get _api_Get;
     private readonly JourneyysContext _context;
+    private DbSet<Journeyy> _dbSet;
+
     public HomeController(IConfiguration configuration, IAPI_Get api_Get, ILogger<HomeController> logger
                               , JourneyysContext context)
     {
@@ -29,6 +33,7 @@ namespace NEWSHORE_UI.Controllers
       _api_Get = api_Get;
       _logger = logger;
       _context = context;
+      _dbSet = _context.Set<Journeyy>();
     }
     public string Message { get; set; }
     Journeyy ViajeIDA = new Journeyy();
@@ -57,47 +62,15 @@ namespace NEWSHORE_UI.Controllers
         ViewBag.destinos = destinos_sli;
         if (origin is not null && destination is not null && origin != destination)
         {
-          var viewModelJourneysDb = new JourneyIndexData();
-          viewModelJourneysDb.JourneysDb = _context.Journeyys;
-          var journeysDbs = _context.Journeyys;
-          var flight = _context.Flights;
-          var transport = _context.Transports;
-          var travelDB = (from o in journeysDbs
-                          where (o.Destination == destination && o.Origin == origin)
-                          select o).ToList();
-          var travelDB2 = journeysDbs.Where(t => t.Origin == origin && t.Destination == destination).ToList();
-          if (travelDB2.Count() == 0)
+          var travelDB = GetbyIdOriginDestination(origin, destination);
+
+          if (travelDB == null)
           {
             return View(Viajes);
           }
-          else if (travelDB.Count() < 0)
+          else if (travelDB != null)
           {
-            List<Flight> flights = new List<Flight>();
-            List<Transport> transports = new List<Transport>();
-
-            travelDB2.ForEach(e => transports.Add(
-                new Transport()
-                {
-                  flightCarrier = e.Origin,
-                  flightNumber = e.Destination
-                }));
-            travelDB2.ForEach(e => flights.Add(
-                new Flight()
-                {
-                  Transport = transports[0],
-                  Origin = e.Origin,
-                  Destination = e.Destination,
-                  Price = e.Price
-                }));
-            travelDB2.ForEach(e => Viajes.Add(
-              new Journeyy()
-              {
-                Flights = (ICollection<Flight>)flights[0],
-                Origin = e.Origin,
-                Destination = e.Destination,
-                Price = e.Price
-              }));
-              return View(Viajes);
+            return View(travelDB);
           }
           else
           {
@@ -117,6 +90,12 @@ namespace NEWSHORE_UI.Controllers
               Flights = ViajeVUELTA.Flights,
               Price = ViajeVUELTA.Price
             });
+            var resultExist = GetbyIdOriginDestination(origin, destination);
+            if (resultExist == null)
+            {
+              Add(ViajeIDA);
+              Add(ViajeVUELTA);
+            }
           }
           //return View(ViajeIDA);
           return View(Viajes);
@@ -131,7 +110,31 @@ namespace NEWSHORE_UI.Controllers
       }
     }
 
+    public async Task<bool> Add(Journeyy journeyy)
+    {
+      try
+      {
+        bool journey1 = _dbSet.Any(e => e.Origin == journeyy.Origin && e.Destination == journeyy.Destination);
+        if (journey1)
+          return false;
+        _dbSet.Add(journeyy);
+        return await _context.SaveChangesAsync() > 0;
+      }
+      catch (Exception ex)
+      {
+        _logger.LogError($"Error en {nameof(Add)}: " + ex.Message);
+      }
+      return false;
+    }
 
+    public Journeyy GetbyIdOriginDestination(string origin, string destination)
+    {
+      bool exist = _dbSet.Any(e => e.Origin == origin && e.Destination == destination);
+      var journey = _dbSet.FirstOrDefault(e => e.Origin == origin && e.Destination == destination);
+      if (journey != null)
+        return journey;
+      return null;
+    }
 
     /// <summary>
     /// Busca origen y destino del viaje
