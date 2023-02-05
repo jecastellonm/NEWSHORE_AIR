@@ -1,6 +1,6 @@
-﻿@using NEWSHORE_AIR.DataAccess
+﻿@using NEWSHORE_UI.Models
 @*@model Journeyy*@
-@model IEnumerable<Journeyy>
+@model IEnumerable<Journeys>
 @{
   ViewData["Title"] = "Home Page";
 }
@@ -73,7 +73,7 @@
             @foreach (var item2 in item.Flights)
             {
               <div class="col-12 col-xl-12 col-lg-12 line-height:0">
-                @if (@j == 0 || item.Flights.Count()-j==item.Flights.Count())
+                @if (@j == 0 || item.Flights.Count()-j==item.Flights.Count()/2)
                 {<strong>@((@e + @es))</strong>; e++;
                 }
                 @Html.Label("Origen:  ")

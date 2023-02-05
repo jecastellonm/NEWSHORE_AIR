@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NEWSHORE_UI.Interfaces
 {
-  interface IJourneyRepository: IGenericRepository<Journeyy>
+  public interface IJourneyRepository: IGenericRepository<Journeyy>
   {
     Task<List<Journeyy>> GetAll();
     Journeyy GetbyIdOriginDestination(string origin, string destino);

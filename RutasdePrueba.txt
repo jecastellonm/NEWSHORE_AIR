@@ -36,6 +36,25 @@ new Route { departureStation = "CTG", arrivalStation = "MDE", flightCarrier = "C
 new Route { departureStation = "CTG", arrivalStation = "BOG", flightCarrier = "CO",flightNumber = "9010", price = 200},
 
 
+
+              transport.Add(new Models.Transport
+              {
+                flightCarrier = ViajeIDA.Flights.Select(t => t.Transport.flightCarrier).FirstOrDefault(),
+                flightNumber = ViajeIDA.Flights.Select(t => t.Transport.flightNumber).FirstOrDefault()
+              });
+              travelIDA.Flights.Add(new Models.Flight
+              {
+                Origin = ViajeIDA.Origin,
+                Destination = ViajeIDA.Destination,
+                Price = ViajeIDA.Price,
+                Transport = transport[0] //(Models.Transport)ViajeIDA.Flights.Select(o=>o.Transport)
+              });
+              travelIDA.Origin = ViajeIDA.Origin;
+              travelIDA.Destination = ViajeIDA.Destination;
+              travelIDA.Price = ViajeIDA.Price;
+
+
+
 for (int x = pri3.Length-1; x >=0 ;x--) if (pri3[x] == null) pri3[x].Remove(x);
 
       newTarget = flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA ?
