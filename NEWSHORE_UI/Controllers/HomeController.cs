@@ -39,9 +39,9 @@ namespace NEWSHORE_UI.Controllers
     Journeyy ViajeIDA = new Journeyy();
     Journeyy ViajeVUELTA = new Journeyy();
     List<NEWSHORE_UI.Models.Journeys> Viajes = new List<NEWSHORE_UI.Models.Journeys>();
+    List<NEWSHORE_UI.Models.Journeys> travelDBInOut = new List<NEWSHORE_UI.Models.Journeys>();
     NEWSHORE_UI.Models.Journeys travelIDA = new NEWSHORE_UI.Models.Journeys();
     NEWSHORE_UI.Models.Journeys travelVUELTA = new NEWSHORE_UI.Models.Journeys();
-    List<NEWSHORE_UI.Models.Journeys> travelDBOut = new List<NEWSHORE_UI.Models.Journeys>();
 
     int contTransport = 0;
     int contTransportReturn = 0;
@@ -69,11 +69,30 @@ namespace NEWSHORE_UI.Controllers
         if (origin is not null && destination is not null && origin != destination)
         {
           var travelDB = GetbyIdOriginDestination(origin, destination);
+          if (travelDB != null)
+            travelDBInOut.Add(new NEWSHORE_UI.Models.Journeys
+            {
+              Destination = travelDB.Destination,
+              Origin = travelDB.Origin,
+              Flights = travelDB.Flights,
+              JourneyyFlights = travelDB.JourneyyFlights,
+              Price = travelDB.Price
+            });
+          travelDB = GetbyIdOriginDestination(destination, origin);
+          if (travelDB != null)
+            travelDBInOut.Add(new NEWSHORE_UI.Models.Journeys
+            {
+              Destination = travelDB.Destination,
+              Origin = travelDB.Origin,
+              Flights = travelDB.Flights,
+              JourneyyFlights = travelDB.JourneyyFlights,
+              Price = travelDB.Price
+            });
 
-
-          if (travelDB == null)
+          if (travelDBInOut == null)
           {
             ViajeIDA = _api_Get.Rutas(origin, destination);
+
             List<NEWSHORE_UI.Models.Journeys> travelDBIn = new List<NEWSHORE_UI.Models.Journeys>();
             //List<NEWSHORE_UI.Models.Journeys> travelDBOut = new List<NEWSHORE_UI.Models.Journeys>();
 
@@ -96,6 +115,10 @@ namespace NEWSHORE_UI.Controllers
                 Price = v.Price,
                 Transport = transport[contTransport++] //(Models.Transport)v.Flights.Select(o=>o.Transport)
               });
+              travelIDA.JourneyyFlights.Add(new Models.JourneyyFlight
+              {
+
+              });
             }
             travelIDA.Origin = ViajeIDA.Origin;
             travelIDA.Destination = ViajeIDA.Destination;
@@ -106,44 +129,48 @@ namespace NEWSHORE_UI.Controllers
               Destination = travelIDA.Destination,
               Origin = travelIDA.Origin,
               Flights = travelIDA.Flights,
+              JourneyyFlights = travelIDA.JourneyyFlights,
               Price = travelIDA.Price
             });
             travelDBIn.Add(travelIDA);
 
+            ViajeVUELTA = _api_Get.RutasRegreso(destination, origin);
+            travelVUELTA.Flights = new List<Models.Flight>();
+            List<Models.Transport> transport2 = new List<Models.Transport>();
+            //Models.Flight flight2 = new Models.Flight();
 
+            foreach (Flight v in ViajeVUELTA.Flights)
+            {
+              transport2.Add(new Models.Transport
+              {
+                flightCarrier = v.Transport.flightCarrier,
+                flightNumber = v.Transport.flightNumber
+              });
+              travelVUELTA.Flights.Add(new Models.Flight
+              {
+                Origin = v.Origin,
+                Destination = v.Destination,
+                Price = v.Price,
+                Transport = transport[contTransportReturn++] //(Models.Transport)v.Flights.Select(o=>o.Transport)
+              });
+              travelVUELTA.JourneyyFlights.Add(new Models.JourneyyFlight
+              {
 
-            //ViajeVUELTA = _api_Get.RutasRegreso(destination, origin);
-            //travelVUELTA.Flights = new List<Models.Flight>();
-            //List<Models.Transport> transport2 = new List<Models.Transport>();
-            ////Models.Flight flight2 = new Models.Flight();
+              });
+            }
 
-            //foreach (Flight v in ViajeVUELTA.Flights)
-            //{
-            //  transport2.Add(new Models.Transport
-            //  {
-            //    flightCarrier = v.Transport.flightCarrier,
-            //    flightNumber = v.Transport.flightNumber
-            //  });
-            //  travelVUELTA.Flights.Add(new Models.Flight
-            //  {
-            //    Origin = v.Origin,
-            //    Destination = v.Destination,
-            //    Price = v.Price,
-            //    Transport = transport[contTransportReturn++] //(Models.Transport)v.Flights.Select(o=>o.Transport)
-            //  });
-            //}
+            travelVUELTA.Origin = ViajeVUELTA.Origin;
+            travelVUELTA.Destination = ViajeVUELTA.Destination;
+            travelVUELTA.Price = ViajeVUELTA.Price;
 
-            //travelVUELTA.Origin = ViajeVUELTA.Origin;
-            //travelVUELTA.Destination = ViajeVUELTA.Destination;
-            //travelVUELTA.Price = ViajeVUELTA.Price;
-
-            //Viajes.Add(new NEWSHORE_UI.Models.Journeys
-            //{
-            //  Destination = travelVUELTA.Destination,
-            //  Origin = travelVUELTA.Origin,
-            //  Flights = travelVUELTA.Flights,
-            //  Price = travelVUELTA.Price
-            //});
+            Viajes.Add(new NEWSHORE_UI.Models.Journeys
+            {
+              Destination = travelVUELTA.Destination,
+              Origin = travelVUELTA.Origin,
+              Flights = travelVUELTA.Flights,
+              JourneyyFlights = travelVUELTA.JourneyyFlights,
+              Price = travelVUELTA.Price
+            });
 
             var resultExist = GetbyIdOriginDestination(origin, destination);
             if (resultExist == null)
@@ -153,15 +180,17 @@ namespace NEWSHORE_UI.Controllers
             }
             return View(Viajes);
           }
-          else if (travelDB != null)
+          else if (travelDBInOut != null)
           {
-            Viajes.Add(new NEWSHORE_UI.Models.Journeys
-            {
-              Destination = travelDB.Destination,
-              Origin = travelDB.Origin,
-              Flights = travelDB.Flights,
-              Price = travelDB.Price
-            });
+            Viajes.AddRange(travelDBInOut);
+            //Viajes.Add(new NEWSHORE_UI.Models.Journeys
+            //{
+            //  Destination = travelDB.Destination,
+            //  Origin = travelDB.Origin,
+            //  Flights = travelDB.Flights,
+            //  JourneyyFlights = travelDB.JourneyyFlights,
+            //  Price = travelDB.Price
+            //});
 
             return View(Viajes);
           }
@@ -185,9 +214,16 @@ namespace NEWSHORE_UI.Controllers
     {
       try
       {
-        bool journey1 = _dbSet.Any(e => e.Origin == journeyy.Origin && e.Destination == journeyy.Destination);
+        bool journey1 = _dbSet.Include(jf => jf.JourneyyFlights)
+                                .ThenInclude(jf => jf.Flight)
+                                    .ThenInclude(jf => jf.Transport)
+                              .Include(jf => jf.Flights)
+                                .ThenInclude(jf => jf.Transport)
+                              .AsNoTracking()
+                              .Any(e => e.Origin == journeyy.Origin && e.Destination == journeyy.Destination);
         if (journey1)
           return false;
+
         _dbSet.Add(journeyy);
         return await _context.SaveChangesAsync() > 0;
       }
@@ -200,10 +236,19 @@ namespace NEWSHORE_UI.Controllers
 
     public NEWSHORE_UI.Models.Journeys GetbyIdOriginDestination(string origin, string destination)
     {
-      bool exist = _dbSet.Any(e => e.Origin == origin && e.Destination == destination);
+      var viaje = _context.Journeyys
+                    .Include(jf => jf.JourneyyFlights)
+                      .ThenInclude(jf => jf.Flight)
+                        .ThenInclude(jf => jf.Transport)
+                    .Include(jf => jf.Flights)
+                      .ThenInclude(jf => jf.Transport)
+                     .AsNoTracking()
+                     .FirstOrDefault(jf => jf.Origin == origin && jf.Destination == destination);
+      bool exist = _dbSet.Include(jf => jf.JourneyyFlights).ThenInclude(jf => jf.Flight)
+                        .Any(jf => jf.Origin == origin && jf.Destination == destination);
       var journey = _dbSet.FirstOrDefault(e => e.Origin == origin && e.Destination == destination);
-      if (journey != null)
-        return journey;
+      if (viaje != null)
+        return viaje;
       return null;
     }
 
