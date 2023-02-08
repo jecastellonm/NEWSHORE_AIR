@@ -37,7 +37,10 @@ Uso de JQuery
 Uso de SwalAlert para los mensajes
 Rutas de Prueba
 
-
+BACKEND
+Uso de carga DILIGENTE para traer la data de la DB cuando ya la ruta se ha calculado previamente y se encuentra almacenada en la base de datos
+Adicion de rutas calculadas no existente en la base de datos condicionadas a la no existencia de las mismas
+Uso de REPOSITORY
 
 MZL MED     MED CTG    PEI CTG          MZL BOG             CTG MAD             MZL BCN             PEI MAD            PEI MEX   
                           PEI MZL CTG     MZL CTG BOG         CTG BOG MAD         MZL MDE BCN         PEI BOG MAD        PEI BOG MEX
