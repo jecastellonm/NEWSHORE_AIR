@@ -52,8 +52,8 @@ namespace NEWSHORE_AIR.API
     List<string> pri_EXT_VUELTA = new List<string>();
     List<string> pri_LOCAL_VUELTA_D = new List<string>();
     List<string> pri_EXT_VUELTA_D = new List<string>();
-    
-    int contTransport =0;
+
+    int contTransport = 0;
     int contTransportReturn = 0;
     public void flightsFill(List<ResponseNewShoreAPI> stopovers)
     {
@@ -103,7 +103,7 @@ namespace NEWSHORE_AIR.API
                                 .Select(x => x.departureStation).ToList();
       pri_LOCAL = lstviajes.Where(x => x.arrivalStation == destino && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
                            .Select(x => x.departureStation).ToList();
-      pri_EXT = lstviajes.Where(x => x.arrivalStation == destino) 
+      pri_EXT = lstviajes.Where(x => x.arrivalStation == destino)
                          .Select(x => x.departureStation).ToList();
       pri_LOCAL_VUELTA = lstviajes.Where(x => x.departureStation == origen && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
                                   .Select(x => x.arrivalStation).ToList();
@@ -120,7 +120,7 @@ namespace NEWSHORE_AIR.API
                 lstviajes.Where(x => x.departureStation == origen && x.arrivalStation == pri_LOCAL[i]
                                 && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
                          .Select(x => x.arrivalStation).ToArray() : pri00 = Array.Empty<string>();
-          if (pri00.Length > 0) _ = pri0[a++] = pri00[0]; 
+          if (pri00.Length > 0) _ = pri0[a++] = pri00[0];
         }
         pri0 = pri0.Where(e => e != null).ToArray();
       }
@@ -158,7 +158,7 @@ namespace NEWSHORE_AIR.API
       }
       else { pri3 = Array.Empty<string>(); }
 
-        if (pri_EXT_VUELTA.Count() > 0)
+      if (pri_EXT_VUELTA.Count() > 0)
       {
         a = 0;
         for (int i = 0; i < pri_EXT_VUELTA.Count(); i++)
@@ -184,7 +184,7 @@ namespace NEWSHORE_AIR.API
 
       if (viajessList.Count() == 0)
       {
-        if (pri0.Length > 0 || pri1.Length > 0 || pri4.Length > 0) 
+        if (pri0.Length > 0 || pri1.Length > 0 || pri4.Length > 0)
         {
           if (flightCarrierOrigen[0] == FlightCarrier.CO.ToString() && flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA)
           {
@@ -202,7 +202,7 @@ namespace NEWSHORE_AIR.API
                 totalPrice1 = (double)(from o in lstviajes
                                        where (o.departureStation == origen && o.arrivalStation == pri0[0])
                                        select o.price).Sum();
-              if (flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0] && pri0.Count() < 2)
+              if (flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
                 flights.Reverse();
               if (pri0.Count() > 1)
               {
@@ -218,7 +218,7 @@ namespace NEWSHORE_AIR.API
                                        where (o.departureStation == origen && o.arrivalStation == pri0[1])
                                        select o.price).Sum();
                 if ((flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
-                      && (flights[2].Origin == pri0[1] && flights[3].Destination == pri0[1]))
+                 && (flights[2].Origin == pri0[1] && flights[3].Destination == pri0[1]))
                   flights.Reverse();
               }
             }
@@ -273,7 +273,7 @@ namespace NEWSHORE_AIR.API
                 totalPrice1 = (double)(from o in lstviajes
                                        where (o.departureStation == origen && o.arrivalStation == pri1[0])
                                        select o.price).Sum();
-              if (flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0] && pri1.Count() < 2)
+              if (flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
                 flights.Reverse();
               if (pri1.Count() > 1)
               {
@@ -308,7 +308,7 @@ namespace NEWSHORE_AIR.API
                 totalPrice1 = (double)(from o in lstviajes
                                        where (o.departureStation == origen && o.arrivalStation == pri4[0])
                                        select o.price).Sum();
-              if (flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0] && pri4.Count() < 2)
+              if (flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
                 flights.Reverse();
               if (pri4.Count() > 1)
               {
@@ -332,19 +332,6 @@ namespace NEWSHORE_AIR.API
         }
         else
         {
-          var pri_0 = (from o in lstviajes
-                       where (o.departureStation == pri_EXT[0] && o.arrivalStation == destino)
-                       select o).ToList();
-          transport.flightCarrier = pri_0[0].flightCarrier;
-          transport.flightNumber = pri_0[0].flightNumber;
-          pri_0.ForEach(e => flights.Add(
-              new Flight()
-              {
-                Transport = transport,
-                Origin = e.departureStation,
-                Destination = e.arrivalStation,
-                Price = e.price
-              }));
           if (flightCarrierOrigen[0] == FLIGHT_CARRIER_COLOMBIA && flightCarrierDestino[0] == FlightCarrier.CO.ToString())
           {
             var sdo_i_0 = (from o in lstviajes
@@ -372,8 +359,8 @@ namespace NEWSHORE_AIR.API
                            where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
                                    || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_LOCAL[0]))
                            select o).ToList();
-              if ((sdo_0[0].departureStation != origen && sdo_0[0].arrivalStation != pri_LOCAL[0])
-                    || (sdo_0[0].departureStation != origen && sdo_0[0].arrivalStation != pri_LOCAL[0]))
+              if ((sdo_0[0].departureStation == sdo_0[1].arrivalStation))
+                //|| (sdo_0[0].departureStation != origen && sdo_0[1].arrivalStation != pri_LOCAL[0]))
                 sdo_0.Reverse();
               flightsFill(sdo_0);
               if (sdo_i_0.Count() < 2)
@@ -387,8 +374,8 @@ namespace NEWSHORE_AIR.API
                              where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[1])
                                      || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_LOCAL[1]))
                              select o).ToList();
-                if ((sdo_2[0].departureStation != origen && sdo_2[1].arrivalStation != pri_LOCAL[0])
-                     || (sdo_2[0].departureStation != origen && sdo_2[1].arrivalStation != pri_LOCAL[0]))
+                if ((sdo_2[0].departureStation == sdo_2[1].arrivalStation)
+                     || (sdo_2[2].departureStation == sdo_2[3].arrivalStation))
                   sdo_2.Reverse();
                 flightsFill(sdo_2);
                 totalPrice5 = (double)(from o in lstviajes
@@ -401,8 +388,8 @@ namespace NEWSHORE_AIR.API
                                where ((o.departureStation == origen && o.arrivalStation == sdo_i_0[1])
                                        || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_LOCAL[1]))
                                select o).ToList();
-                  if ((sdo_4[0].departureStation != origen && sdo_4[1].arrivalStation != pri_LOCAL[0])
-                        || (sdo_4[0].departureStation != origen && sdo_4[1].arrivalStation != pri_LOCAL[0]))
+                  if ((sdo_4[0].departureStation == sdo_4[1].arrivalStation)
+                        || (sdo_4[2].departureStation == sdo_4[3].arrivalStation))
                     sdo_4.Reverse();
                   flightsFill(sdo_4);
                   totalPrice6 = (double)(from o in lstviajes
@@ -411,8 +398,8 @@ namespace NEWSHORE_AIR.API
                                          select o.price).Sum();
                 }
               }
-              if ((flights[0].Origin != origen && flights[1].Destination != pri_LOCAL[0])
-                    || (flights[0].Origin != origen && flights[1].Destination != pri_LOCAL[0]))
+              if ((flights[0].Origin == flights[1].Destination)
+                    || (flights[2].Origin == flights[3].Destination))
                 flights.Reverse();
               var priU1 = (from o in lstviajes
                            where (o.departureStation == pri_LOCAL[0] && o.arrivalStation == destino)
@@ -428,11 +415,11 @@ namespace NEWSHORE_AIR.API
                              .Intersect((from o in lstviajes
                                          where o.departureStation == origen || o.arrivalStation == pri_EXT[0]
                                          select o.departureStation)).ToList();
-            if (sdo_i_0.Count() == 0 && pri_EXT_VUELTA.Count() > 0)
+            if (sdo_i_0.Count == 0 && pri_EXT_VUELTA.Count > 0)
             {
               for (int x = 0; x < pri_EXT.Count();) pri_EXT.RemoveAt(x);
               pri_EXT.AddRange(pri_EXT_VUELTA);
-              sdo_i_0 = sdo_i_0.Count() == 0 && pri_EXT_VUELTA.Count() > 0 ?
+              sdo_i_0 = sdo_i_0.Count == 0 && pri_EXT_VUELTA.Count > 0 ?
                 (from o in lstviajes
                  where o.departureStation == destino || o.arrivalStation == pri_EXT_VUELTA[0]
                  select o.arrivalStation)
@@ -441,14 +428,14 @@ namespace NEWSHORE_AIR.API
                                              select o.departureStation)).ToList()
                 : new List<string>() { };
             }
-            if (sdo_i_0.Count() > 0)
+            if (sdo_i_0.Count > 0)
             {
               var sdo_0 = (from o in lstviajes
                            where (((o.departureStation == origen && o.arrivalStation == sdo_i_0[0])
                                    || (o.departureStation == destino && o.arrivalStation == sdo_i_0[0]))
                                    || (o.departureStation == sdo_i_0[0] && o.arrivalStation == pri_EXT[0]))
                            select o).ToList();
-              if ((sdo_0[0].departureStation != origen && sdo_0[1].arrivalStation != pri_EXT[0]))
+              if ((sdo_0[0].departureStation == sdo_0[1].arrivalStation))
                 sdo_0.Reverse();
               flightsFill(sdo_0);
               if (sdo_i_0.Count() < 2)
@@ -463,7 +450,8 @@ namespace NEWSHORE_AIR.API
                                      || (o.departureStation == destino && o.arrivalStation == sdo_i_0[1])
                                      || (o.departureStation == sdo_i_0[1] && o.arrivalStation == pri_EXT[0]))
                              select o).ToList();
-                if ((sdo_1[0].departureStation != origen && sdo_1[1].arrivalStation != pri_EXT[0]))
+                if ((sdo_1[0].departureStation == sdo_1[1].arrivalStation)
+                   || (sdo_1[2].departureStation == sdo_1[3].arrivalStation))
                   sdo_1.Reverse();
 
                 flightsFill(sdo_1);
@@ -485,10 +473,23 @@ namespace NEWSHORE_AIR.API
                                          select o.price).Sum();
                 }
               }
-              if ((flights[0].Origin != origen && flights[1].Destination != pri_EXT[0]))
+              if ((flights[0].Origin == flights[1].Destination))
                 flights.Reverse();
             }
           }
+          var pri_0 = (from o in lstviajes
+                       where o.departureStation == pri_EXT[0] && o.arrivalStation == destino
+                       select o).ToList();
+          transport.flightCarrier = pri_0[0].flightCarrier;
+          transport.flightNumber = pri_0[0].flightNumber;
+          pri_0.ForEach(e => flights.Add(
+              new Flight()
+              {
+                Transport = transport,
+                Origin = e.departureStation,
+                Destination = e.arrivalStation,
+                Price = e.price
+              }));
         }
 
         double totalPrice = totalPrice0 + totalPrice1 + totalPrice2 + totalPrice3 + totalPrice4 + totalPrice5 + totalPrice6;
@@ -588,7 +589,7 @@ namespace NEWSHORE_AIR.API
         for (int i = 0; i < pri_LOCAL.Count(); i++)
         {
           pri00 = pri_LOCAL.Count() > 0 ?
-                lstviajes.Where(x => x.departureStation == pri_LOCAL[i] && x.arrivalStation ==destino 
+                lstviajes.Where(x => x.departureStation == pri_LOCAL[i] && x.arrivalStation == destino
                                 && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
                          .Select(x => x.departureStation).ToArray() : pri00 = Array.Empty<string>();
           if (pri00.Length > 0) _ = pri0[a++] = pri00[0];
@@ -620,7 +621,7 @@ namespace NEWSHORE_AIR.API
         for (int i = 0; i < pri_LOCAL_VUELTA.Count(); i++)
         {
           pri33 = pri_LOCAL_VUELTA.Count() > 0 ?
-                lstviajes.Where(x => x.departureStation == pri_LOCAL_VUELTA[i] && x.arrivalStation == destino 
+                lstviajes.Where(x => x.departureStation == pri_LOCAL_VUELTA[i] && x.arrivalStation == destino
                                     && x.flightCarrier == FLIGHT_CARRIER_COLOMBIA)
                          .Select(x => x.departureStation).ToArray() : pri33 = Array.Empty<string>();
           if (pri33.Length > 0) pri3[a++] = pri33[0];
@@ -646,10 +647,10 @@ namespace NEWSHORE_AIR.API
 
       totalPrice0 = flightCarrierOrigen[0] == FlightCarrier.CO.ToString() && flightCarrierDestino[0] == FlightCarrier.CO.ToString() ?
       (double)(from o in lstviajes
-               where (o.departureStation == origen && o.arrivalStation == pri_LOCAL[0]&& o.flightCarrier == FlightCarrier.CO.ToString())
+               where (o.departureStation == origen && o.arrivalStation == pri_LOCAL[0] && o.flightCarrier == FlightCarrier.CO.ToString())
                select o.price).FirstOrDefault()
       : (double)(from o in lstviajes
-                 where (o.departureStation == origen && o.arrivalStation == newTarget[0])
+                 where (o.departureStation == origen && o.arrivalStation == pri_EXT[0])
                  select o.price).FirstOrDefault();
 
 
@@ -664,15 +665,15 @@ namespace NEWSHORE_AIR.API
               var pri_U1 = (from o in lstviajes
                             where (o.departureStation == origen && o.arrivalStation == pri0[0])
                             select o).ToList();
-              flightsFill_Return(pri_U1); 
+              flightsFill_Return(pri_U1);
               var pri_1 = (from o in lstviajes
-                           where (o.departureStation == pri0[0] && o.arrivalStation == destino )
+                           where (o.departureStation == pri0[0] && o.arrivalStation == destino)
                            select o).ToList();
               flightsFill_Return(pri_1);
 
               if (pri0.Count() < 2)
                 totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri0[0] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri0[0] && o.arrivalStation == destino)
                                        select o.price).Sum();
               if (flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0] && pri0.Count() < 2)
                 flights.Reverse();
@@ -683,12 +684,12 @@ namespace NEWSHORE_AIR.API
                               select o).ToList();
                 flightsFill_Return(pri_U2);
                 var pri_2 = (from o in lstviajes
-                             where (o.departureStation == pri0[1] && o.arrivalStation == destino )
+                             where (o.departureStation == pri0[1] && o.arrivalStation == destino)
                              select o).ToList();
                 flightsFill_Return(pri_2);
 
                 totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri0[1] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri0[1] && o.arrivalStation == destino)
                                        select o.price).Sum();
                 if ((flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
                       && (flights[2].Origin == pri0[1] && flights[3].Destination == pri0[1]))
@@ -702,13 +703,13 @@ namespace NEWSHORE_AIR.API
                             select o).ToList();
               flightsFill_Return(pri_U1);
               var pri_1 = (from o in lstviajes
-                           where (o.departureStation == pri3[0] && o.arrivalStation == destino )
+                           where (o.departureStation == pri3[0] && o.arrivalStation == destino)
                            select o).ToList();
               flightsFill_Return(pri_1);
 
               if (pri3.Count() < 2)
                 totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri3[0] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri3[0] && o.arrivalStation == destino)
                                        select o.price).Sum();
               if (flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0] && pri3.Count() < 2)
                 flights.Reverse();
@@ -723,7 +724,7 @@ namespace NEWSHORE_AIR.API
                               select o).ToList();
                 flightsFill_Return(pri_U2);
                 totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri3[1] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri3[1] && o.arrivalStation == destino)
                                        select o.price).Sum();
                 if ((flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0])
                       && (flights[2].Origin == pri3[1] && flights[3].Destination == pri3[1]))
@@ -745,7 +746,7 @@ namespace NEWSHORE_AIR.API
               flightsFill_Return(pri_U1);
               if (pri1.Count() < 2)
                 totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri1[0] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri1[0] && o.arrivalStation == destino)
                                        select o.price).Sum();
               if (flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0] && pri1.Count() < 2)
                 flights.Reverse();
@@ -760,7 +761,7 @@ namespace NEWSHORE_AIR.API
                               select o).ToList();
                 flightsFill_Return(pri_U2);
                 totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri1[1] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri1[1] && o.arrivalStation == destino)
                                        select o.price).Sum();
                 if ((flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
                       && (flights[2].Origin == pri1[1] && flights[3].Destination == pri1[1]))
@@ -795,7 +796,7 @@ namespace NEWSHORE_AIR.API
                               select o).ToList();
                 flightsFill_Return(pri_U2);
                 totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri4[1] && o.arrivalStation == destino )
+                                       where (o.departureStation == pri4[1] && o.arrivalStation == destino)
                                        select o.price).Sum();
                 if ((flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
                       && (flights[2].Origin == pri4[1] && flights[3].Destination == pri4[1]))
@@ -822,10 +823,10 @@ namespace NEWSHORE_AIR.API
           if (flightCarrierOrigen[0] == FLIGHT_CARRIER_COLOMBIA && flightCarrierDestino[0] == FlightCarrier.CO.ToString())
           {
             var sdo_i_0 = (from o in lstviajes
-                           where o.departureStation == pri_LOCAL[0] || o.arrivalStation == destino 
+                           where o.departureStation == pri_LOCAL[0] || o.arrivalStation == destino
                            select o.arrivalStation)
                              .Intersect((from o in lstviajes
-                                         where o.departureStation == pri_LOCAL[0] || o.arrivalStation == destino 
+                                         where o.departureStation == pri_LOCAL[0] || o.arrivalStation == destino
                                          select o.departureStation)).ToList();
             if (sdo_i_0.Count() == 0 && pri_LOCAL_VUELTA.Count() > 0)
             {
@@ -833,63 +834,62 @@ namespace NEWSHORE_AIR.API
               pri_LOCAL.AddRange(pri_LOCAL_VUELTA);
               sdo_i_0 = sdo_i_0.Count() == 0 && pri_LOCAL_VUELTA.Count() > 0 ?
                 (from o in lstviajes
-                 where o.departureStation == pri_LOCAL_VUELTA[0] || o.arrivalStation == origen 
+                 where o.departureStation == pri_LOCAL_VUELTA[0] || o.arrivalStation == origen
                  select o.arrivalStation)
                                  .Intersect((from o in lstviajes
-                                             where o.departureStation == pri_LOCAL_VUELTA[0] || o.arrivalStation == origen 
+                                             where o.departureStation == pri_LOCAL_VUELTA[0] || o.arrivalStation == origen
                                              select o.departureStation)).ToList()
                 : new List<string>() { };
             }
             if (sdo_i_0.Count() > 0)
             {
               var sdo_0 = (from o in lstviajes
-                           where ((o.departureStation == sdo_i_0[0] && o.arrivalStation == destino )
-                                   || (o.departureStation == pri_LOCAL[0] && o.arrivalStation == sdo_i_0[0] ))
+                           where ((o.departureStation == sdo_i_0[0] && o.arrivalStation == destino)
+                                   || (o.departureStation == pri_LOCAL[0] && o.arrivalStation == sdo_i_0[0]))
                            select o).ToList();
-              if ((sdo_0[0].departureStation != pri_LOCAL[0] && sdo_0[0].arrivalStation != destino )
-                    || (sdo_0[0].departureStation != pri_LOCAL[0] && sdo_0[0].arrivalStation != destino ))
+              if ((sdo_0[0].departureStation != pri_LOCAL[0] && sdo_0[0].arrivalStation != destino)
+                    || (sdo_0[0].departureStation != pri_LOCAL[0] && sdo_0[0].arrivalStation != destino))
                 sdo_0.Reverse();
               flightsFill_Return(sdo_0);
               if (sdo_i_0.Count() < 2)
                 totalPrice3 = (double)(from o in lstviajes
-                                       where (o.departureStation == sdo_i_0[0] && o.arrivalStation == destino )
-                                               || (o.departureStation == pri_LOCAL[0] && o.arrivalStation == sdo_i_0[0] )
+                                       where (o.departureStation == sdo_i_0[0] && o.arrivalStation == destino)
+                                               || (o.departureStation == pri_LOCAL[0] && o.arrivalStation == sdo_i_0[0])
                                        select o.price).Sum();
               if (sdo_i_0.Count() > 1)
               {
                 var sdo_2 = (from o in lstviajes
-                             where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
-                                     || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[1] ))
+                             where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
+                                     || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[1]))
                              select o).ToList();
-                if ((sdo_2[0].departureStation != pri_LOCAL[0] && sdo_2[1].arrivalStation != destino )
-                     || (sdo_2[0].departureStation != pri_LOCAL[0] && sdo_2[1].arrivalStation != destino ))
+                if ((sdo_2[0].departureStation != pri_LOCAL[0] && sdo_2[1].arrivalStation != destino))
                   sdo_2.Reverse();
                 flightsFill_Return(sdo_2);
                 totalPrice5 = (double)(from o in lstviajes
-                                       where (o.departureStation == sdo_i_0[0] && o.arrivalStation == destino )
-                                               || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[0] )
+                                       where (o.departureStation == sdo_i_0[0] && o.arrivalStation == destino)
+                                               || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[0])
                                        select o.price).Sum();
                 if (pri_LOCAL.Count() > 1)
                 {
                   var sdo_4 = (from o in lstviajes
-                               where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
-                                       || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[1] ))
+                               where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
+                                       || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[1]))
                                select o).ToList();
-                  if ((sdo_4[0].departureStation != pri_LOCAL[0] && sdo_4[1].arrivalStation != destino )
-                        || (sdo_4[0].departureStation != pri_LOCAL[0] && sdo_4[1].arrivalStation != destino ))
+                  if ((sdo_4[0].departureStation != pri_LOCAL[0] && sdo_4[1].arrivalStation != destino)
+                        || (sdo_4[0].departureStation != pri_LOCAL[0] && sdo_4[1].arrivalStation != destino))
                     sdo_4.Reverse();
                   flightsFill_Return(sdo_4);
                   totalPrice6 = (double)(from o in lstviajes
-                                         where (o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
-                                                 || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[1] )
+                                         where (o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
+                                                 || (o.departureStation == pri_LOCAL[1] && o.arrivalStation == sdo_i_0[1])
                                          select o.price).Sum();
                 }
               }
-              if ((flights[0].Origin != pri_LOCAL[0] && flights[1].Destination != destino )
-                    || (flights[0].Origin != pri_LOCAL[0] && flights[1].Destination != destino ))
+              if ((flights[0].Origin != pri_LOCAL[0] && flights[1].Destination != destino)
+                    || (flights[0].Origin != pri_LOCAL[0] && flights[1].Destination != destino))
                 flights.Reverse();
               var priU1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri_LOCAL[0] )
+                           where (o.departureStation == origen && o.arrivalStation == pri_LOCAL[0])
                            select o).ToList();
               flightsFill_Return(priU1);
             }
@@ -897,10 +897,10 @@ namespace NEWSHORE_AIR.API
           else
           {
             var sdo_i_0 = (from o in lstviajes
-                           where o.departureStation == pri_EXT[0] || o.arrivalStation == destino 
+                           where o.departureStation == pri_EXT[0] || o.arrivalStation == destino
                            select o.arrivalStation)
                              .Intersect((from o in lstviajes
-                                         where o.departureStation == pri_EXT[0] || o.arrivalStation == destino 
+                                         where o.departureStation == pri_EXT[0] || o.arrivalStation == destino
                                          select o.departureStation)).ToList();
             if (sdo_i_0.Count() == 0 && pri_EXT_VUELTA.Count() > 0)
             {
@@ -908,61 +908,61 @@ namespace NEWSHORE_AIR.API
               pri_EXT.AddRange(pri_EXT_VUELTA);
               sdo_i_0 = sdo_i_0.Count() == 0 && pri_EXT_VUELTA.Count() > 0 ?
                 (from o in lstviajes
-                 where o.departureStation == pri_EXT_VUELTA[0] || o.arrivalStation == origen 
+                 where o.departureStation == pri_EXT_VUELTA[0] || o.arrivalStation == origen
                  select o.arrivalStation)
                                  .Intersect((from o in lstviajes
-                                             where o.departureStation == pri_EXT_VUELTA[0] || o.arrivalStation == origen 
+                                             where o.departureStation == pri_EXT_VUELTA[0] || o.arrivalStation == origen
                                              select o.departureStation)).ToList()
                 : new List<string>() { };
             }
             if (sdo_i_0.Count() > 0)
             {
               var sdo_0 = (from o in lstviajes
-                           where (((o.departureStation == sdo_i_0[0] && o.arrivalStation == destino )
-                                   || (o.departureStation == sdo_i_0[0] && o.arrivalStation == origen ))
+                           where (((o.departureStation == sdo_i_0[0] && o.arrivalStation == destino)
+                                   || (o.departureStation == sdo_i_0[0] && o.arrivalStation == origen))
                                    || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[0]))
                            select o).ToList();
-              if ((sdo_0[0].departureStation != pri_EXT[0] && sdo_0[1].arrivalStation != destino ))
+              if ((sdo_0[0].departureStation != pri_EXT[0] && sdo_0[1].arrivalStation != destino))
                 sdo_0.Reverse();
               flightsFill_Return(sdo_0);
               if (sdo_i_0.Count() < 2)
                 totalPrice3 = (double)(from o in lstviajes
-                                       where (o.departureStation == sdo_i_0[0] && o.arrivalStation == destino )
-                                               || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[0] )
+                                       where (o.departureStation == sdo_i_0[0] && o.arrivalStation == destino)
+                                               || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[0])
                                        select o.price).Sum();
               if (sdo_i_0.Count() > 1)
               {
                 var sdo_1 = (from o in lstviajes
-                             where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
-                                       || (o.departureStation == sdo_i_0[1] && o.arrivalStation == origen )
-                                     || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[1] ))
+                             where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
+                                       || (o.departureStation == sdo_i_0[1] && o.arrivalStation == origen)
+                                     || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[1]))
                              select o).ToList();
-                if ((sdo_1[0].departureStation != pri_EXT[0] && sdo_1[1].arrivalStation != destino )
-                  || (sdo_1[0].departureStation != pri_EXT[0] && sdo_1[1].arrivalStation != destino ))
+                if ((sdo_1[0].departureStation != pri_EXT[0] && sdo_1[1].arrivalStation != destino)
+                  || (sdo_1[2].departureStation != pri_EXT[0] && sdo_1[3].arrivalStation != destino))
                   sdo_1.Reverse();
 
                 flightsFill_Return(sdo_1);
                 totalPrice5 = (double)(from o in lstviajes
-                                       where (o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
-                                               || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[1] )
+                                       where (o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
+                                               || (o.departureStation == pri_EXT[0] && o.arrivalStation == sdo_i_0[1])
                                        select o.price).Sum();
                 if (pri_EXT.Count() > 1)
                 {
                   var sdo_00 = (from o in lstviajes
-                                where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
+                                where ((o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
                                     || (o.departureStation == sdo_i_0[1] && o.arrivalStation == origen)
-                                    || (o.departureStation == pri_EXT[1] && o.arrivalStation == sdo_i_0[1] ))
+                                    || (o.departureStation == pri_EXT[1] && o.arrivalStation == sdo_i_0[1]))
                                 select o).ToList();
                   flightsFill_Return(sdo_00);
                   totalPrice6 = (double)(from o in lstviajes
-                                         where (o.departureStation == sdo_i_0[1] && o.arrivalStation == destino )
-                                                 || (o.departureStation == pri_EXT[1] && o.arrivalStation == sdo_i_0[1] )
+                                         where (o.departureStation == sdo_i_0[1] && o.arrivalStation == destino)
+                                                 || (o.departureStation == pri_EXT[1] && o.arrivalStation == sdo_i_0[1])
                                          select o.price).Sum();
                 }
               }
-              if ((flights[0].Origin != pri_EXT[0] && flights[1].Destination != destino ))
+              if ((flights[0].Origin != pri_EXT[0] && flights[1].Destination != destino))
                 flights.Reverse();
-              
+
             }
           }
         }
@@ -976,7 +976,7 @@ namespace NEWSHORE_AIR.API
       else
       {
         var pri_0 = (from o in lstviajes
-                     where (o.departureStation == origen && o.arrivalStation == destino )
+                     where (o.departureStation == origen && o.arrivalStation == destino)
                      select o).ToList();
         transport2.flightCarrier = pri_0[0].flightCarrier;
         transport2.flightNumber = pri_0[0].flightNumber;
@@ -989,7 +989,7 @@ namespace NEWSHORE_AIR.API
               Price = e.price
             }));
         totalPrice0 = (double)(from o in lstviajes
-                               where (o.departureStation == origen && o.arrivalStation == destino )
+                               where (o.departureStation == origen && o.arrivalStation == destino)
                                select o.price).FirstOrDefault();
         double totalPrice = totalPrice0;
         journey2.Flights = flights2;
@@ -1075,7 +1075,7 @@ namespace NEWSHORE_AIR.API
         var destinationssList = (from o in destinationsList select o.Station).Distinct().ToList();
         Message = $"Get Origenes Exitoso {DateTime.Now.ToLongDateString()} {DateTime.UtcNow.ToLongTimeString()}";
         _logger.LogInformation(Message);
-        return destinationssList; 
+        return destinationssList;
       }
       return null;
     }

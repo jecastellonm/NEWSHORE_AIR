@@ -38,7 +38,7 @@
         <div class="form-group">
         </div>
       </div>
-      @if (Model is not null)
+      @if (Model.Count() > 0)
       {
         int x = 0;
         int y = 1;
@@ -73,7 +73,8 @@
             @foreach (var item2 in item.Flights)
             {
               <div class="col-12 col-xl-12 col-lg-12 line-height:0">
-                @if (@j == 0 || item.Flights.Count()-j==item.Flights.Count()/2)
+                @if (((j == 0 || j % 2 == 0) && (x == 0) && (j != 3)) || ((j == 1 || j % 2 == 1) && (x == 1)))
+                @*@if ((j == 0 && (x == 0 || x % 2 == 0)) || (item.Flights.Count() % 2 == 0 && item.Flights.Count() - j == item.Flights.Count() / 2) || (item.Flights.Count() % 2 == 1 & (x == 0 || x % 2 == 0)))*@
                 {<strong>@((@e + @es))</strong>; e++;
                 }
                 @Html.Label("Origen:  ")
