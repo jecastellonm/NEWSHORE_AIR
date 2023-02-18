@@ -186,149 +186,150 @@ namespace NEWSHORE_AIR.API
       {
         if (pri0.Length > 0 || pri1.Length > 0 || pri4.Length > 0)
         {
-          if (flightCarrierOrigen[0] == FlightCarrier.CO.ToString() && flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA)
+          //if (flightCarrierOrigen[0] == FlightCarrier.CO.ToString() && flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA)
+          //{
+          if (pri0.Count() > 0)
           {
-            if (pri0.Count() > 0)
-            {
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri0[0])
-                           select o).ToList();
-              flightsFill(pri_1);
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == pri0[0] && o.arrivalStation == destino)
-                            select o).ToList();
-              flightsFill(pri_U1);
-              if (pri0.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri0[0])
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
-                flights.Reverse();
-              if (pri0.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri0[1])
-                             select o).ToList();
-                flightsFill(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri0[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri0[1])
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
-                 && (flights[2].Origin == pri0[1] && flights[3].Destination == pri0[1]))
-                  flights.Reverse();
-              }
-            }
-            else if (pri3.Count() > 0)
-            {
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri3[0])
-                           select o).ToList();
-              flightsFill(pri_1);
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == pri3[0] && o.arrivalStation == destino)
-                            select o).ToList();
-              flightsFill(pri_U1);
-              if (pri3.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri3[0])
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0] && pri3.Count() < 2)
-                flights.Reverse();
-              if (pri3.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri3[1])
-                             select o).ToList();
-                flightsFill(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri3[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri3[1])
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0])
-                      && (flights[2].Origin == pri3[1] && flights[3].Destination == pri3[1]))
-                  flights.Reverse();
-              }
-            }
-          }
-          else
-          {
-            if (pri1.Count() > 0)
-            {
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri1[0])
-                           select o).ToList();
-              flightsFill(pri_1);
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == pri1[0] && o.arrivalStation == destino)
-                            select o).ToList();
-              flightsFill(pri_U1);
-              if (pri1.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri1[0])
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
-                flights.Reverse();
-              if (pri1.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri1[1])
-                             select o).ToList();
-                flightsFill(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri1[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri1[1])
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
-                      && (flights[2].Origin == pri1[1] && flights[3].Destination == pri1[1]))
-                  flights.Reverse();
-              }
-            }
-            else if (pri4.Count() > 0)
-            {
 
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri4[0])
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == origen && o.arrivalStation == pri0[0])
+                         select o).ToList();
+            flightsFill(pri_1);
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == pri0[0] && o.arrivalStation == destino)
+                          select o).ToList();
+            flightsFill(pri_U1);
+            if (pri0.Length < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri0[0])
+                                     select o.price).Sum();
+            if (flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
+              flights.Reverse();
+            if (pri0.Length > 1)
+            {
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri0[1])
                            select o).ToList();
-              flightsFill(pri_1);
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == pri4[0] && o.arrivalStation == destino)
+              flightsFill(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri0[1] && o.arrivalStation == destino)
                             select o).ToList();
-              flightsFill(pri_U1);
-              if (pri4.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri4[0])
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
+              flightsFill(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri0[1])
+                                     select o.price).Sum();
+              if ((flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
+               && (flights[2].Origin == pri0[1] && flights[3].Destination == pri0[1]))
                 flights.Reverse();
-              if (pri4.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri4[1])
-                             select o).ToList();
-                flightsFill(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri4[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == origen && o.arrivalStation == pri4[1])
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
-                      && (flights[2].Origin == pri4[1] && flights[3].Destination == pri4[1]))
-                  flights.Reverse();
-              }
             }
           }
+          else if (pri3.Count() > 0)
+          {
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == origen && o.arrivalStation == pri3[0])
+                         select o).ToList();
+            flightsFill(pri_1);
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == pri3[0] && o.arrivalStation == destino)
+                          select o).ToList();
+            flightsFill(pri_U1);
+            if (pri3.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri3[0])
+                                     select o.price).Sum();
+            if (flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0] && pri3.Count() < 2)
+              flights.Reverse();
+            if (pri3.Count() > 1)
+            {
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri3[1])
+                           select o).ToList();
+              flightsFill(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri3[1] && o.arrivalStation == destino)
+                            select o).ToList();
+              flightsFill(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri3[1])
+                                     select o.price).Sum();
+              if ((flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0])
+                    && (flights[2].Origin == pri3[1] && flights[3].Destination == pri3[1]))
+                flights.Reverse();
+            }
+          }
+          //}
+          //else
+          //{
+          else if (pri1.Count() > 0)
+          {
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == origen && o.arrivalStation == pri1[0])
+                         select o).ToList();
+            flightsFill(pri_1);
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == pri1[0] && o.arrivalStation == destino)
+                          select o).ToList();
+            flightsFill(pri_U1);
+            if (pri1.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri1[0])
+                                     select o.price).Sum();
+            if (flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
+              flights.Reverse();
+            if (pri1.Count() > 1)
+            {
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri1[1])
+                           select o).ToList();
+              flightsFill(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri1[1] && o.arrivalStation == destino)
+                            select o).ToList();
+              flightsFill(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri1[1])
+                                     select o.price).Sum();
+              if ((flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
+                    && (flights[2].Origin == pri1[1] && flights[3].Destination == pri1[1]))
+                flights.Reverse();
+            }
+          }
+          else if (pri4.Count() > 0)
+          {
+
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == origen && o.arrivalStation == pri4[0])
+                         select o).ToList();
+            flightsFill(pri_1);
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == pri4[0] && o.arrivalStation == destino)
+                          select o).ToList();
+            flightsFill(pri_U1);
+            if (pri4.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri4[0])
+                                     select o.price).Sum();
+            if (flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
+              flights.Reverse();
+            if (pri4.Count() > 1)
+            {
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri4[1])
+                           select o).ToList();
+              flightsFill(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri4[1] && o.arrivalStation == destino)
+                            select o).ToList();
+              flightsFill(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == origen && o.arrivalStation == pri4[1])
+                                     select o.price).Sum();
+              if ((flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
+                    && (flights[2].Origin == pri4[1] && flights[3].Destination == pri4[1]))
+                flights.Reverse();
+            }
+          }
+          //}
         }
         else
         {
@@ -658,152 +659,153 @@ namespace NEWSHORE_AIR.API
       {
         if (pri0.Length > 0 || pri1.Length > 0)
         {
-          if (flightCarrierOrigen[0] == FlightCarrier.CO.ToString() && flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA)
+          //if (flightCarrierOrigen[0] == FlightCarrier.CO.ToString() && flightCarrierDestino[0] == FLIGHT_CARRIER_COLOMBIA)
+          //{
+          if (pri0.Count() > 0)
           {
-            if (pri0.Count() > 0)
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == origen && o.arrivalStation == pri0[0])
+                          select o).ToList();
+            flightsFill_Return(pri_U1);
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == pri0[0] && o.arrivalStation == destino)
+                         select o).ToList();
+            flightsFill_Return(pri_1);
+
+            if (pri0.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri0[0] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+            //if (flights2[0].Origin == pri0[0] && flights2[1].Destination == pri0[0] && pri0.Count() < 2)
+            if (flights2[0].Origin == flights2[1].Destination ) //&& pri0.Count() < 2)
+              flights2.Reverse();
+            if (pri0.Count() > 1)
             {
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == origen && o.arrivalStation == pri0[0])
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == origen && o.arrivalStation == pri0[1])
                             select o).ToList();
-              flightsFill_Return(pri_U1);
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == pri0[0] && o.arrivalStation == destino)
+              flightsFill_Return(pri_U2);
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == pri0[1] && o.arrivalStation == destino)
                            select o).ToList();
-              flightsFill_Return(pri_1);
+              flightsFill_Return(pri_2);
 
-              if (pri0.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri0[0] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0] && pri0.Count() < 2)
-                flights.Reverse();
-              if (pri0.Count() > 1)
-              {
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == origen && o.arrivalStation == pri0[1])
-                              select o).ToList();
-                flightsFill_Return(pri_U2);
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == pri0[1] && o.arrivalStation == destino)
-                             select o).ToList();
-                flightsFill_Return(pri_2);
-
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri0[1] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri0[0] && flights[1].Destination == pri0[0])
-                      && (flights[2].Origin == pri0[1] && flights[3].Destination == pri0[1]))
-                  flights.Reverse();
-              }
-            }
-            else if (pri3.Count() > 0)
-            {
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == origen && o.arrivalStation == pri3[0])
-                            select o).ToList();
-              flightsFill_Return(pri_U1);
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == pri3[0] && o.arrivalStation == destino)
-                           select o).ToList();
-              flightsFill_Return(pri_1);
-
-              if (pri3.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri3[0] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0] && pri3.Count() < 2)
-                flights.Reverse();
-              if (pri3.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri3[1])
-                             select o).ToList();
-                flightsFill_Return(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri3[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill_Return(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri3[1] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri3[0] && flights[1].Destination == pri3[0])
-                      && (flights[2].Origin == pri3[1] && flights[3].Destination == pri3[1]))
-                  flights.Reverse();
-              }
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri0[1] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+              if ((flights2[0].Origin == flights2[1].Destination)
+                    && (flights2[2].Origin == flights2[3].Destination))
+                flights2.Reverse();
             }
           }
-          else
+          else if (pri1.Count() > 0)
           {
-            if (pri1.Count() > 0)
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == origen && o.arrivalStation == pri1[0])
+                         select o).ToList();
+            flightsFill_Return(pri_1);
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == pri1[0] && o.arrivalStation == destino)
+                          select o).ToList();
+            flightsFill_Return(pri_U1);
+            if (pri1.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri1[0] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+            if (flights2[0].Origin == flights2[1].Destination)
+              flights2.Reverse();
+            if (pri1.Count() > 1)
             {
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri1[0])
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri1[1])
                            select o).ToList();
-              flightsFill_Return(pri_1);
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == pri1[0] && o.arrivalStation == destino)
+              flightsFill_Return(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri1[1] && o.arrivalStation == destino)
                             select o).ToList();
-              flightsFill_Return(pri_U1);
-              if (pri1.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri1[0] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0] && pri1.Count() < 2)
-                flights.Reverse();
-              if (pri1.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri1[1])
-                             select o).ToList();
-                flightsFill_Return(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri1[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill_Return(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri1[1] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri1[0] && flights[1].Destination == pri1[0])
-                      && (flights[2].Origin == pri1[1] && flights[3].Destination == pri1[1]))
-                  flights.Reverse();
-              }
-            }
-            else if (pri4.Count() > 0)
-            {
-
-              var pri_1 = (from o in lstviajes
-                           where (o.departureStation == origen && o.arrivalStation == pri4[0])
-                           select o).ToList();
-              flightsFill_Return(pri_1);
-              var pri_U1 = (from o in lstviajes
-                            where (o.departureStation == pri4[0] && o.arrivalStation == destino)
-                            select o).ToList();
-              flightsFill_Return(pri_U1);
-              if (pri4.Count() < 2)
-                totalPrice1 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri4[0] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-              if (flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0] && pri4.Count() < 2)
-                flights.Reverse();
-              if (pri4.Count() > 1)
-              {
-                var pri_2 = (from o in lstviajes
-                             where (o.departureStation == origen && o.arrivalStation == pri4[1])
-                             select o).ToList();
-                flightsFill_Return(pri_2);
-                var pri_U2 = (from o in lstviajes
-                              where (o.departureStation == pri4[1] && o.arrivalStation == destino)
-                              select o).ToList();
-                flightsFill_Return(pri_U2);
-                totalPrice2 = (double)(from o in lstviajes
-                                       where (o.departureStation == pri4[1] && o.arrivalStation == destino)
-                                       select o.price).Sum();
-                if ((flights[0].Origin == pri4[0] && flights[1].Destination == pri4[0])
-                      && (flights[2].Origin == pri4[1] && flights[3].Destination == pri4[1]))
-                  flights.Reverse();
-              }
+              flightsFill_Return(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri1[1] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+              if ((flights2[0].Origin == flights2[1].Destination)
+                    && (flights2[2].Origin == pri1[1] && flights2[3].Destination == pri1[1]))
+                flights2.Reverse();
             }
           }
+          else if (pri3.Count() > 0)
+          {
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == origen && o.arrivalStation == pri3[0])
+                          select o).ToList();
+            flightsFill_Return(pri_U1);
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == pri3[0] && o.arrivalStation == destino)
+                         select o).ToList();
+            flightsFill_Return(pri_1);
+
+            if (pri3.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri3[0] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+            if (flights2[0].Origin == flights2[1].Destination)
+              flights2.Reverse();
+            if (pri3.Count() > 1)
+            {
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri3[1])
+                           select o).ToList();
+              flightsFill_Return(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri3[1] && o.arrivalStation == destino)
+                            select o).ToList();
+              flightsFill_Return(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri3[1] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+              if ((flights[0].Origin == flights[1].Destination)
+                    && (flights[2].Origin == flights[3].Destination))
+                flights.Reverse();
+            }
+          }
+          //}
+          //else
+          //{
+          else if (pri4.Count() > 0)
+          {
+
+            var pri_1 = (from o in lstviajes
+                         where (o.departureStation == origen && o.arrivalStation == pri4[0])
+                         select o).ToList();
+            flightsFill_Return(pri_1);
+            var pri_U1 = (from o in lstviajes
+                          where (o.departureStation == pri4[0] && o.arrivalStation == destino)
+                          select o).ToList();
+            flightsFill_Return(pri_U1);
+            if (pri4.Count() < 2)
+              totalPrice1 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri4[0] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+            if (flights2[0].Origin == flights2[1].Destination)
+              flights2.Reverse();
+            if (pri4.Count() > 1)
+            {
+              var pri_2 = (from o in lstviajes
+                           where (o.departureStation == origen && o.arrivalStation == pri4[1])
+                           select o).ToList();
+              flightsFill_Return(pri_2);
+              var pri_U2 = (from o in lstviajes
+                            where (o.departureStation == pri4[1] && o.arrivalStation == destino)
+                            select o).ToList();
+              flightsFill_Return(pri_U2);
+              totalPrice2 = (double)(from o in lstviajes
+                                     where (o.departureStation == pri4[1] && o.arrivalStation == destino)
+                                     select o.price).Sum();
+              if ((flights2[0].Origin == flights2[1].Destination)
+                    && (flights2[2].Origin == flights2[3].Destination))
+                flights2.Reverse();
+            }
+          }
+          //}
         }
         else
         {
@@ -885,9 +887,9 @@ namespace NEWSHORE_AIR.API
                                          select o.price).Sum();
                 }
               }
-              if ((flights[0].Origin != pri_LOCAL[0] && flights[1].Destination != destino)
-                    || (flights[0].Origin != pri_LOCAL[0] && flights[1].Destination != destino))
-                flights.Reverse();
+              if ((flights2[0].Origin != pri_LOCAL[0] && flights2[1].Destination != destino)
+                    || (flights2[0].Origin != pri_LOCAL[0] && flights2[1].Destination != destino))
+                flights2.Reverse();
               var priU1 = (from o in lstviajes
                            where (o.departureStation == origen && o.arrivalStation == pri_LOCAL[0])
                            select o).ToList();
@@ -960,8 +962,8 @@ namespace NEWSHORE_AIR.API
                                          select o.price).Sum();
                 }
               }
-              if ((flights[0].Origin != pri_EXT[0] && flights[1].Destination != destino))
-                flights.Reverse();
+              if ((flights2[0].Origin != pri_EXT[0] && flights2[1].Destination != destino))
+                flights2.Reverse();
 
             }
           }

@@ -31,20 +31,21 @@ namespace NEWSHORE_UI.DataAccess
         .HasOne(t => t.Transport)
         .WithOne(f => f.Flight)
         .HasForeignKey<Transport>(t => t.flightID);
-    
+
 
       modelBuilder.Entity<JourneyyFlight>()
-        .HasKey(jf => new {jf.FlightID , jf.JourneyID});
+        .HasKey(f => new {f.JourneyID ,f.FlightID});
 
       modelBuilder.Entity<JourneyyFlight>()
-          .HasOne(jf => jf.Journeys)
-          .WithMany(j => j.JourneyyFlights)
-          .HasForeignKey(jf => jf.JourneyID);
+        .HasOne(jf => jf.Journeys)
+        .WithMany(j => j.JourneyyFlights)
+        .HasForeignKey(j => j.JourneyID);
 
       modelBuilder.Entity<JourneyyFlight>()
           .HasOne(jf => jf.Flight)
           .WithMany(f => f.JourneyyFlights)
-          .HasForeignKey(jf => jf.FlightID);
+          .HasForeignKey(f => f.FlightID);
+
     }
 
   }

@@ -21,7 +21,8 @@ namespace NEWSHORE_UI.Data
 
       var journeys = new Journeys[]
       {
-        new Journeys { Origin = "MDE", Destination = "BOG", Price = 200}
+        new Journeys { Origin = "MDE", Destination = "BOG", Price = 400}
+        , new Journeys { Origin = "BOG", Destination = "MDE", Price = 400}
       };
       foreach (Journeys j in journeys)
       {
@@ -33,7 +34,10 @@ namespace NEWSHORE_UI.Data
       var flights = new Flight[]
       {
         new Flight {Origin = "MDE", Destination = "CTG", Price = 200 }
+                //, JourneysID = journeys.Single( p => p.Origin== "MDE" && p.Destination == "BOG").ID }
         ,new Flight {Origin = "CTG", Destination = "BOG", Price = 200 }
+        ,new Flight {Origin = "BOG", Destination = "CTG", Price = 200 }
+        ,new Flight {Origin = "CTG", Destination = "MDE", Price = 200 }
       };
       foreach (Flight f in flights)
       {
@@ -45,8 +49,10 @@ namespace NEWSHORE_UI.Data
 
       var journeyFlight = new JourneyyFlight[]
       {
-        new JourneyyFlight { JourneyID = 1, FlightID = 3 },
-        new JourneyyFlight { JourneyID = 1, FlightID = 4 }
+        new JourneyyFlight { JourneyID = 1, FlightID = 1, DateAddEdit = DateTime.Now },
+        new JourneyyFlight { JourneyID = 1, FlightID = 2, DateAddEdit = DateTime.Now },
+        new JourneyyFlight { JourneyID = 2, FlightID = 3, DateAddEdit = DateTime.Now },
+        new JourneyyFlight { JourneyID = 2, FlightID = 4, DateAddEdit = DateTime.Now }
       };
       foreach (JourneyyFlight j in journeyFlight)
       {
@@ -58,11 +64,18 @@ namespace NEWSHORE_UI.Data
       var transports = new Transport[]
       {
         new Transport {flightCarrier = "CO", flightNumber ="8009"
-                    ,flightID = flights.Single( p => p.Origin== "MDE" && p.Destination == "CTG").FlightID
+                    ,flightID = flights.Single( p => p.Origin== "MDE" && p.Destination == "CTG").ID
         },
         new Transport {flightCarrier = "CO", flightNumber ="9010",
-                    flightID = flights.Single( p => p.Origin== "CTG" && p.Destination == "BOG").FlightID
+                    flightID = flights.Single( p => p.Origin== "CTG" && p.Destination == "BOG").ID
         },
+        new Transport {flightCarrier = "CO", flightNumber ="8010"
+                    ,flightID = flights.Single( p => p.Origin== "BOG" && p.Destination == "CTG").ID
+        },
+        new Transport {flightCarrier = "CO", flightNumber ="9009",
+                    flightID = flights.Single( p => p.Origin== "CTG" && p.Destination == "MDE").ID
+        }
+
       };
       foreach (Transport t in transports)
       {

@@ -74,29 +74,29 @@
             string ef = "Escala Final   ";
             @foreach (var item2 in item.Flights)
             {
-    <div class="col-12 col-xl-12 col-lg-12 line-height:0">
-      @if (((j == 0 || j % 2 == 0) && (x == 0) && (e != 3)) || ((j == 1 || j % 2 == 1) && (x == 1)))
-      @*@if ((j == 0 && (x == 0 || x % 2 == 0)) || (item.Flights.Count() % 2 == 0 && item.Flights.Count() - j == item.Flights.Count() / 2) || (item.Flights.Count() % 2 == 1 & (x == 0 || x % 2 == 0)))*@
-      {<strong>@((@e + @es))</strong>; e++;
-      }
-      @if ((j == 4 && x == 0))
-      {<strong>@((@ef))</strong>;
-      }
-      @if ((j == 0 && x == 1))
-      {<strong>@((@ei))</strong>;
-      }
+              <div class="col-12 col-xl-12 col-lg-12 line-height:0">
+                @if (((j == 0 || j % 2 == 0) && (x == 0) && (e != 3)) || ((j == 1 || j % 2 == 1) && (x == 1) && (item.Flights.Count() % 2 == 1)) || ((j == 0 || j % 2 == 0) && (item.Flights.Count() % 2 == 0 && (x == 1))))
+                @*@if ((j == 0 && (x == 0 || x % 2 == 0)) || (item.Flights.Count() % 2 == 0 && item.Flights.Count() - j == item.Flights.Count() / 2) || (item.Flights.Count() % 2 == 1 && (x == 0 || x % 2 == 0)))*@
+                {<strong>@((@e + @es))</strong>; e++;
+                }
+                @if ((j == 4 && x == 0 && item.Flights.Count() % 2 == 0))
+                {<strong>@((@ef))</strong>;
+                }
+                @if ((j == 0 && x == 1 && item.Flights.Count() % 2 == 1))
+                {<strong>@((@ei))</strong>;
+                }
 
-      @Html.Label("Origen:  ")
-      @Html.DisplayFor(modelitem => item2.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Origin" })
-      @Html.Label("    Destino:  ")
-      @Html.DisplayFor(modelitem => item2.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Destination" })
-      @Html.Label("    Aerolinea:  ")
-      @Html.DisplayFor(modelitem => item2.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightCarrier" })
-      @Html.Label("    Numero Vuelo:  ")
-      @Html.DisplayFor(modelitem => item2.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
-      @Html.Label("    Precio: ")
-      @Html.DisplayFor(modelitem => item2.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
-    </div>
+                @Html.Label("Origen:  ")
+                @Html.DisplayFor(modelitem => item2.Origin, new { @class = "form-control", @style = "margin-bottom:0px", id = "Origin" })
+                @Html.Label("    Destino:  ")
+                @Html.DisplayFor(modelitem => item2.Destination, new { @class = "form-control", @style = "margin-bottom:0px", id = "Destination" })
+                @Html.Label("    Aerolinea:  ")
+                @Html.DisplayFor(modelitem => item2.Transport.flightCarrier, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightCarrier" })
+                @Html.Label("    Numero Vuelo:  ")
+                @Html.DisplayFor(modelitem => item2.Transport.flightNumber, new { @class = "form-control", @style = "margin-bottom:0px", id = "flightNumber" })
+                @Html.Label("    Precio: ")
+                @Html.DisplayFor(modelitem => item2.Price, new { @class = "form-control", @style = "margin-bottom:0px", id = "Price" })
+              </div>
               j++;
             }
           }
